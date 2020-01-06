@@ -7,7 +7,7 @@
     </head>
     <body>
         <a href="/login/google">
-            Log In With Google
+            Log In With Facebook
         </a>
     </body>
 </html>
