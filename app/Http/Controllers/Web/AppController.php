@@ -8,7 +8,6 @@ use Auth;
 class AppController extends Controller
 {
     public function getApp(){
-        var_dump(Auth::user());
         return view('app');
     }
 
