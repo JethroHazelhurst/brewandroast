@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Cafe;
 
 class CafesController extends Controller
 {
@@ -18,7 +19,8 @@ class CafesController extends Controller
     */
     public function getCafes()
     {
-
+        $cafes = Cafe::all();
+        return response()->json($cafes);
     }
 
     /*
@@ -33,7 +35,9 @@ class CafesController extends Controller
     */
     public function getCafe($id)
     {
+        $cafe = Cafe::where('id', '=', $id)->first()
 
+        return response()->json($cafe);
     }
 
     /*
@@ -44,9 +48,18 @@ class CafesController extends Controller
     | Method:         POST
     | Description:    Adds a new cafe to the application
     */
-    public function postNewCafe(
+    public function postNewCafe()
     {
+        $cafe = new Cafe();
 
+        $cafe->name     = Request::get('name');
+        $cafe->address  = Request::get('address');
+        $cafe->city     = Request::get('city');
+        $cafe->state    = Request::get('state');
+        $cafe->zip      = Request::get('zip');
+
+        $cafe->save();
+
+        return response()->json($cafe, 201);
     }
-
 }
