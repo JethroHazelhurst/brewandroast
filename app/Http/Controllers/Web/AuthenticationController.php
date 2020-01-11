@@ -10,7 +10,8 @@ use Auth;
 
 class AuthenticationController extends Controller
 {
-    public function getSocialRedirect( $account ){
+    public function getSocialRedirect( $account )
+    {
         try{
             return Socialite::with( $account )->redirect();
         }catch ( \InvalidArgumentException $e ){
@@ -18,7 +19,8 @@ class AuthenticationController extends Controller
         }
     }
 
-    public function getSocialCallback( $account ){
+    public function getSocialCallback( $account )
+    {
       /*
         Grabs the user who authenticated via social account.
       */

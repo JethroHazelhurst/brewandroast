@@ -7,5 +7,19 @@ use Illuminate\Http\Request;
 
 class CafesController extends Controller
 {
+    /**
+     *
+     */
+    public function getCafes()
+    {
 
+    }
+
+    /**
+     * 
+     */
+    public function getCafe()
+    {
+
+    }
 }

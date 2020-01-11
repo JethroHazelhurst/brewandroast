@@ -7,11 +7,13 @@ use Auth;
 
 class AppController extends Controller
 {
-    public function getApp(){
+    public function getApp()
+    {
         return view('app');
     }
 
-    public function getLogin(){
+    public function getLogin()
+    {
         return view('login');
     }
 }
