@@ -59508,38 +59508,42 @@ __webpack_require__.r(__webpack_exports__);
 | Contains all of the routes for the application
 */
 
-/*
-    Imports Vue and VueRouter to extend with the routes.
-*/
+/**
+ * Imports vue and vuerouter to extend with the routes.
+ */
 
 
-/*
-    Extends Vue to use Vue Router
-*/
+/**
+ * Extends Vue to use Vue Router.
+ */
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
-/*
-    Makes a new VueRouter that we will use to run all of the routes
-    for the app.
-*/
+/**
+ * Makes a new VueRouter that we will use to run all of the routes for the app.
+ */
 
 /* harmony default export */ __webpack_exports__["default"] = (new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   routes: [{
     path: '/',
-    name: 'home',
-    component: vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Home', __webpack_require__(/*! ./pages/Home.vue */ "./resources/js/pages/Home.vue")["default"])
-  }, {
-    path: '/cafes',
-    name: 'cafes',
-    component: vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Cafes', __webpack_require__(/*! ./pages/Cafes.vue */ "./resources/js/pages/Cafes.vue")["default"])
-  }, {
-    path: '/cafes/new',
-    name: 'newcafe',
-    component: vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('NewCafe', __webpack_require__(/*! ./pages/NewCafe.vue */ "./resources/js/pages/NewCafe.vue")["default"])
-  }, {
-    path: '/cafes/:id',
-    name: 'cafe',
-    component: vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Cafe', __webpack_require__(/*! ./pages/Cafe.vue */ "./resources/js/pages/Cafe.vue")["default"])
+    name: 'layout',
+    component: vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Home', __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module './pages/Layout.vue'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()))["default"]),
+    children: [{
+      path: 'home',
+      name: 'home',
+      component: vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Home', __webpack_require__(/*! ./pages/Home.vue */ "./resources/js/pages/Home.vue")["default"])
+    }, {
+      path: '/cafes',
+      name: 'cafes',
+      component: vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Cafes', __webpack_require__(/*! ./pages/Cafes.vue */ "./resources/js/pages/Cafes.vue")["default"])
+    }, {
+      path: '/cafes/new',
+      name: 'newcafe',
+      component: vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('NewCafe', __webpack_require__(/*! ./pages/NewCafe.vue */ "./resources/js/pages/NewCafe.vue")["default"])
+    }, {
+      path: '/cafes/:id',
+      name: 'cafe',
+      component: vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Cafe', __webpack_require__(/*! ./pages/Cafe.vue */ "./resources/js/pages/Cafe.vue")["default"])
+    }]
   }]
 }));
 
