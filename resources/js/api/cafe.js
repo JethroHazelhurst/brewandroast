@@ -14,7 +14,7 @@
     /**
      * GET /api/v1/cafes/{cafeID}
      */
-    getCafes: function(cafeID){
+    getCafe: function(cafeID){
         return axios.get( ROAST_CONFIG.API_URL + '/cafes/' + cafeID);
     },
 

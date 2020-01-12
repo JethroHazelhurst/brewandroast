@@ -35,7 +35,7 @@ class CafesController extends Controller
     */
     public function getCafe($id)
     {
-        $cafe = Cafe::where('id', '=', $id)->first()
+        $cafe = Cafe::where('id', '=', $id)->first();
 
         return response()->json($cafe);
     }
