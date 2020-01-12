@@ -1902,15 +1902,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  /**
+   *
+   */
   created: function created() {
     this.$store.dispatch('loadCafes');
   },
+
+  /**
+   *
+   */
   computed: {
+    /**
+     *
+     */
     cafesLoadStatus: function cafesLoadStatus() {
       return this.$store.getters.getCafesLoadStatus;
     },
+
+    /**
+     *
+     */
     cafes: function cafes() {
-      return this.$store;
+      return this.$store.getters.getCafes;
     }
   }
 });
