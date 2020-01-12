@@ -1,9 +1,9 @@
 /**
  * Imports the Roast API URL from the config.
  */
- import { ROAST_CONFIG } from '../config.js';
+import { ROAST_CONFIG } from '../config.js';
 
- export default {
+export default {
     /**
      * GET /api/v1/cafes
      */
@@ -30,4 +30,4 @@
             zip: zip
         });
     }
- }
+}
