@@ -58918,6 +58918,139 @@ new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 
 /***/ }),
 
+/***/ "./resources/js/modules/cafes.js":
+/*!***************************************!*\
+  !*** ./resources/js/modules/cafes.js ***!
+  \***************************************/
+/*! exports provided: cafes */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "cafes", function() { return cafes; });
+!(function webpackMissingModule() { var e = new Error("Cannot find module './api/cafe.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+/*
+|-------------------------------------------------------------------------------
+| VUEX modules/cafes.js
+|-------------------------------------------------------------------------------
+| The Vuex data store for the cafes
+*/
+
+var cafes = {
+  /**
+   * Defines the state.
+   */
+  state: {
+    cafes: [],
+    cafesLoadStatus: 0,
+    cafe: {},
+    cafeLoadStatus: 0
+  },
+
+  /**
+   * Retrieves the data.
+   */
+  actions: {
+    /**
+     * Loads the cafes from the api.
+     */
+    loadCafes: function loadCafes(_ref) {
+      var commit = _ref.commit;
+      commit('setCafesLoadStatus', 1);
+      !(function webpackMissingModule() { var e = new Error("Cannot find module './api/cafe.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()).getCafes().then(function (response) {
+        commit('setCafes', response.data);
+        commit('setCafesLoadStatus', 2);
+      })["catch"](function () {
+        commit('setCafes', []);
+        commit('setCafesLoadStatus', 3);
+      });
+    },
+
+    /**
+     * Loads an individual cafe from the api.
+     */
+    loadCafe: function loadCafe(_ref2, data) {
+      var commit = _ref2.commit;
+      commit('setCafeLoadStatus', 1);
+      !(function webpackMissingModule() { var e = new Error("Cannot find module './api/cafe.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()).getCafe().then(function (response) {
+        commit('setCafe ', response.data);
+        commit('setCafeLoadStatus', 2);
+      })["catch"](function () {
+        commit('setCafe', {});
+        commit('setCafeLoadStatus', 3);
+      });
+    }
+  },
+
+  /**
+   * Sets the state.
+   */
+  mutations: {
+    /**
+     * Sets the cafes load status.
+     */
+    setCafesLoadStatus: function setCafesLoadStatus(state, status) {
+      state.cafesLoadStatus = status;
+    },
+
+    /**
+     * Sets the cafes.
+     */
+    setCafes: function setCafes(state, cafes) {
+      state.cafes = cafes;
+    },
+
+    /**
+     * Sets the cafe load status.
+     */
+    setCafeLoadStatus: function setCafeLoadStatus(state, status) {
+      state.cafeLoadStatus = status;
+    },
+
+    /**
+     * Sets the cafe.
+     */
+    setCafe: function setCafe(state, cafe) {
+      state.cafe = cafe;
+    }
+  },
+
+  /**
+   * Retrieves the data from the state.
+   */
+  getters: {
+    /**
+     * Returns the cafes load status.
+     */
+    getCafesLoadStatus: function getCafesLoadStatus(state) {
+      return state.cafesLoadStatus;
+    },
+
+    /**
+     * Returns the cafes.
+     */
+    getCafes: function getCafes(state) {
+      return state.cafes;
+    },
+
+    /**
+     * Returns the cafe load status.
+     */
+    getCafeLoadStatus: function getCafeLoadStatus(state) {
+      return state.cafeLoadStatus;
+    },
+
+    /**
+     * Returns the cafe.
+     */
+    getCafe: function getCafe(state) {
+      return state.cafe;
+    }
+  }
+};
+
+/***/ }),
+
 /***/ "./resources/js/pages/Cafe.vue":
 /*!*************************************!*\
   !*** ./resources/js/pages/Cafe.vue ***!
@@ -59262,6 +59395,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _modules_cafes_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/cafes.js */ "./resources/js/modules/cafes.js");
 /**
  * Import vue and vuex.
  */
@@ -59273,11 +59407,18 @@ __webpack_require__.r(__webpack_exports__);
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
 /**
- * Export our dtat store.
+ * Import all of the modules used in the application to build the data store.
+ */
+
+
+/**
+ * Import all of the modules used in the application to build the data store.
  */
 
 /* harmony default export */ __webpack_exports__["default"] = (new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
-  modules: {}
+  modules: {
+    cafes: _modules_cafes_js__WEBPACK_IMPORTED_MODULE_2__["cafes"]
+  }
 }));
 
 /***/ }),

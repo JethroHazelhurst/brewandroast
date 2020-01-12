@@ -1,19 +1,24 @@
 /**
  * Import vue and vuex.
  */
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from 'vue';
+import Vuex from 'vuex';
 
 /**
  * Initialise vuex with vue.
  */
-Vue.use( Vuex )
+Vue.use( Vuex );
 
 /**
- * Export our dtat store.
+ * Import all of the modules used in the application to build the data store.
+ */
+import { cafes } from './modules/cafes.js';
+
+/**
+ * Import all of the modules used in the application to build the data store.
  */
 export default new Vuex.Store({
     modules: {
-
+        cafes
     }
 });
