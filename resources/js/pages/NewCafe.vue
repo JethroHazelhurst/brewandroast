@@ -3,13 +3,60 @@
 </style>
 
 <template>
-  <div>
+    <div class="page">
+        <form>
+            <div class="grid-container">
+                <div class="grid-x grid-padding-x">
 
-  </div>
+                    <div class="large-12 medium-12 small-12 cell">
+                        <label>Name
+                            <input type="text" placeholder="Cafe name" v-model="name">
+                        </label>
+                    </div>
+
+                    <div class="large-12 medium-12 small-12 cell">
+                        <label>Address
+                            <input type="text" placeholder="Address" v-model="address">
+                        </label>
+                    </div>
+
+                    <div class="large-12 medium-12 small-12 cell">
+                        <label>City
+                            <input type="text" placeholder="City" v-model="city">
+                        </label>
+                    </div>
+
+                    <div class="large-12 medium-12 small-12 cell">
+                        <label>State
+                            <input type="text" placeholder="State" v-model="state">
+                        </label>
+                    </div>
+
+                    <div class="large-12 medium-12 small-12 cell">
+                        <label>Zip
+                            <input type="text" placeholder="Zip" v-model="zip">
+                        </label>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </div>
 </template>
 
 <script>
-  export default {
-
-  }
+    export default {
+        /**
+         *
+         */
+        data(){
+            return {
+                name: '',
+                address: '',
+                city: '',
+                state: '',
+                zip: ''
+            }
+        }
+    }
 </script>

@@ -87,6 +87,14 @@
 
 <script>
     export default {
+        computed: {
+            userLoadStatus(){
+                return this.$store.getters.getUserLoadStatus();
+            },
 
+            user(){
+                return this.$store.getters.getUser;
+            }
+        }
     }
 </script>
