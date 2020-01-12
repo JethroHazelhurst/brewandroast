@@ -2130,6 +2130,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   /**
    *
@@ -2142,6 +2146,21 @@ __webpack_require__.r(__webpack_exports__);
       state: '',
       zip: ''
     };
+  },
+
+  /**
+   *
+   */
+  methods: {
+    submitNewCafe: function submitNewCafe() {
+      this.$store.dispatch('addCafe', {
+        name: this.name,
+        address: this.address,
+        city: this.city,
+        state: this.state,
+        zip: this.zip
+      });
+    }
   }
 });
 
@@ -43878,6 +43897,21 @@ var render = function() {
                 }
               })
             ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "large-12 medium-12 small-12 cell" }, [
+            _c(
+              "a",
+              {
+                staticClass: "button",
+                on: {
+                  click: function($event) {
+                    return _vm.submitNewCafe()
+                  }
+                }
+              },
+              [_vm._v("Add Cafe")]
+            )
           ])
         ])
       ])
@@ -60294,7 +60328,8 @@ var cafes = {
     cafes: [],
     cafesLoadStatus: 0,
     cafe: {},
-    cafeLoadStatus: 0
+    cafeLoadStatus: 0,
+    cafeAddStatus: 0
   },
 
   /**
@@ -60302,10 +60337,26 @@ var cafes = {
    */
   actions: {
     /**
+     * Adds a cafe.
+     */
+    addCafe: function addCafe(_ref, data) {
+      var commit = _ref.commit,
+          state = _ref.state,
+          dispatch = _ref.dispatch;
+      commit('setCafeAddedStatus', 1);
+      _api_cafe_js__WEBPACK_IMPORTED_MODULE_0__["default"].postAddNewCafe(data.name, data.address, data.city, data.state, data.zip).then(function (response) {
+        commit('setCafeAddedStatus', 2);
+        dispatch('loadCafes');
+      })["catch"](function () {
+        commit('setCafeAddedStatus', 3);
+      });
+    },
+
+    /**
      * Loads the cafes from the api.
      */
-    loadCafes: function loadCafes(_ref) {
-      var commit = _ref.commit;
+    loadCafes: function loadCafes(_ref2) {
+      var commit = _ref2.commit;
       commit('setCafesLoadStatus', 1);
       _api_cafe_js__WEBPACK_IMPORTED_MODULE_0__["default"].getCafes().then(function (response) {
         commit('setCafes', response.data);
@@ -60319,8 +60370,8 @@ var cafes = {
     /**
      * Loads an individual cafe from the api.
      */
-    loadCafe: function loadCafe(_ref2, data) {
-      var commit = _ref2.commit;
+    loadCafe: function loadCafe(_ref3, data) {
+      var commit = _ref3.commit;
       commit('setCafeLoadStatus', 1);
       _api_cafe_js__WEBPACK_IMPORTED_MODULE_0__["default"].getCafe().then(function (response) {
         commit('setCafe ', response.data);
@@ -60362,6 +60413,13 @@ var cafes = {
      */
     setCafe: function setCafe(state, cafe) {
       state.cafe = cafe;
+    },
+
+    /**
+     * Set the cafe add status.
+     */
+    setCafeAddedStatus: function setCafeAddedStatus(state, status) {
+      state.cafeAddStatus = status;
     }
   },
 
@@ -60395,6 +60453,13 @@ var cafes = {
      */
     getCafe: function getCafe(state) {
       return state.cafe;
+    },
+
+    /*
+     * Gets the cafe add status.
+     */
+    getCafeAddStatus: function getCafeAddStatus(state) {
+      return state.cafeAddStatus;
     }
   }
 };

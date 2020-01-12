@@ -38,6 +38,10 @@
                         </label>
                     </div>
 
+                    <div class="large-12 medium-12 small-12 cell">
+                        <a class="button" v-on:click="submitNewCafe()">Add Cafe</a>
+                    </div>
+
                 </div>
             </div>
         </form>
@@ -56,6 +60,21 @@
                 city: '',
                 state: '',
                 zip: ''
+            }
+        },
+
+        /**
+         *
+         */
+         methods: {
+            submitNewCafe(){
+                this.$store.dispatch('addCafe', {
+                    name: this.name,
+                    address: this.address,
+                    city: this.city,
+                    state: this.state,
+                    zip: this.zip
+                });
             }
         }
     }
