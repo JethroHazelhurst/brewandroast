@@ -44,7 +44,7 @@ class AuthenticationController extends Controller
         $newUser->name        = $socialUser->getName();
         $newUser->email       = $socialUser->getEmail() == '' ? '' : $socialUser->getEmail();
         $newUser->avatar      = $socialUser->getAvatar();
-          $newUser->password    = '';
+        $newUser->password    = '';
         $newUser->provider    = $account;
         $newUser->provider_id = $socialUser->getId();
 
@@ -61,7 +61,7 @@ class AuthenticationController extends Controller
       /*
         Redirect to the app
       */
-      return redirect('/');
+      return redirect('/#/home');
     }
 
 }
