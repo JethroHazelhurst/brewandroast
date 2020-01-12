@@ -39,7 +39,7 @@
              *
              */
             cafes(){
-                return this.$store.getters.getCafes
+                return this.$store.getters.getCafes;
             }
         }
     }

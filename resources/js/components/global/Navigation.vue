@@ -1,5 +1,5 @@
 <style lang="scss">
-    @import '~@/abstracts/_variables.scss';
+    @import '~/abstracts/_variables.scss';
 
     nav.top-navigation {
 
@@ -80,7 +80,7 @@
         </ul>
 
         <div class="right">
-            <img class="avatar" :src="user.avatar" v-show="userLoadStatus == 2"/>
+            <!-- <img class="avatar" :src="user.avatar" v-show="userLoadStatus == 2"/> -->
         </div>
     </nav>
 </template>
