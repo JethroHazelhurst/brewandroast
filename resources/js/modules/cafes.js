@@ -5,7 +5,7 @@
 | The Vuex data store for the cafes
 */
 
-import CafeAPI from './api/cafe.js';
+import CafeAPI from '../api/cafe.js';
 
 export const cafes = {
 

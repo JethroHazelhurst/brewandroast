@@ -58865,6 +58865,45 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./resources/js/api/cafe.js":
+/*!**********************************!*\
+  !*** ./resources/js/api/cafe.js ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _config_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../config.js */ "./resources/js/config.js");
+var _getCafes$getCafes$po;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+/**
+ * Imports the Roast API URL from the config.
+ */
+
+/* harmony default export */ __webpack_exports__["default"] = (_getCafes$getCafes$po = {
+  /**
+   * GET /api/v1/cafes
+   */
+  getCafes: function getCafes() {
+    return axios.get(_config_js__WEBPACK_IMPORTED_MODULE_0__["ROAST_CONFIG"].API_URL + '/cafes');
+  }
+}, _defineProperty(_getCafes$getCafes$po, "getCafes", function getCafes(cafeID) {
+  return axios.get(_config_js__WEBPACK_IMPORTED_MODULE_0__["ROAST_CONFIG"].API_URL + '/cafes/' + cafeID);
+}), _defineProperty(_getCafes$getCafes$po, "postAddNewCafe", function postAddNewCafe(name, address, city, state, zip) {
+  return axios.post(_config_js__WEBPACK_IMPORTED_MODULE_0__["ROAST_CONFIG"].API_URL + '/cafes', {
+    name: name,
+    address: address,
+    city: city,
+    state: state,
+    zip: zip
+  });
+}), _getCafes$getCafes$po);
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -58918,6 +58957,37 @@ new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 
 /***/ }),
 
+/***/ "./resources/js/config.js":
+/*!********************************!*\
+  !*** ./resources/js/config.js ***!
+  \********************************/
+/*! exports provided: ROAST_CONFIG */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ROAST_CONFIG", function() { return ROAST_CONFIG; });
+/**
+ * Defines the API route we are using.
+ */
+var api_url = '';
+
+switch ("development") {
+  case 'development':
+    api_url = 'http://localhost:8000/api/v1';
+    break;
+
+  case 'production':
+    api_url = 'https://roastandbrew.coffee/api/v1';
+    break;
+}
+
+var ROAST_CONFIG = {
+  API_URL: api_url
+};
+
+/***/ }),
+
 /***/ "./resources/js/modules/cafes.js":
 /*!***************************************!*\
   !*** ./resources/js/modules/cafes.js ***!
@@ -58928,7 +58998,7 @@ new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "cafes", function() { return cafes; });
-!(function webpackMissingModule() { var e = new Error("Cannot find module './api/cafe.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+/* harmony import */ var _api_cafe_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../api/cafe.js */ "./resources/js/api/cafe.js");
 /*
 |-------------------------------------------------------------------------------
 | VUEX modules/cafes.js
@@ -58957,7 +59027,7 @@ var cafes = {
     loadCafes: function loadCafes(_ref) {
       var commit = _ref.commit;
       commit('setCafesLoadStatus', 1);
-      !(function webpackMissingModule() { var e = new Error("Cannot find module './api/cafe.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()).getCafes().then(function (response) {
+      _api_cafe_js__WEBPACK_IMPORTED_MODULE_0__["default"].getCafes().then(function (response) {
         commit('setCafes', response.data);
         commit('setCafesLoadStatus', 2);
       })["catch"](function () {
@@ -58972,7 +59042,7 @@ var cafes = {
     loadCafe: function loadCafe(_ref2, data) {
       var commit = _ref2.commit;
       commit('setCafeLoadStatus', 1);
-      !(function webpackMissingModule() { var e = new Error("Cannot find module './api/cafe.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()).getCafe().then(function (response) {
+      _api_cafe_js__WEBPACK_IMPORTED_MODULE_0__["default"].getCafe().then(function (response) {
         commit('setCafe ', response.data);
         commit('setCafeLoadStatus', 2);
       })["catch"](function () {
