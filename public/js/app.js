@@ -2179,14 +2179,92 @@ __webpack_require__.r(__webpack_exports__);
    *
    */
   methods: {
+    /**
+     *
+     */
+    validateNewCafe: function validateNewCafe() {
+      var validNewCafeForm = true;
+      /**
+       * Ensure a name has been entered
+       */
+
+      if (this.name.trim() == '') {
+        validNewCafeForm = false;
+        this.validations.name.is_valid = false;
+        this.validations.name.text = "Please enter a name for the new cafe!";
+      } else {
+        this.validations.name.is_valid = true;
+        this.validations.name.text = '';
+      }
+      /**
+       * Ensure an address has been entered
+       */
+
+
+      if (this.address.trim() == '') {
+        validNewCafeForm = false;
+        this.validations.address.is_valid = false;
+        this.validations.address.text = 'Please enter an address for the new cafe!';
+      } else {
+        this.validations.address.is_valid = true;
+        this.validations.address.text = '';
+      }
+      /**
+       * Ensure a city has been entered
+       */
+
+
+      if (this.city.trim() == '') {
+        validNewCafeForm = false;
+        this.validations.city.is_valid = false;
+        this.validations.city.text = 'Please enter a city for the new cafe!';
+      } else {
+        this.validations.city.is_valid = true;
+        this.validations.city.text = '';
+      }
+      /**
+       * Ensure a state has been entered
+       */
+
+
+      if (this.state.trim() == '') {
+        validNewCafeForm = false;
+        this.validations.state.is_valid = false;
+        this.validations.state.text = 'Please enter a state for the new cafe!';
+      } else {
+        this.validations.state.is_valid = true;
+        this.validations.state.text = '';
+      }
+      /**
+       * Ensure a zip has been entered
+       */
+
+
+      if (this.zip.trim() == '' || !this.zip.match(/(^\d{5}$)/)) {
+        validNewCafeForm = false;
+        this.validations.zip.is_valid = false;
+        this.validations.zip.text = 'Please enter a valid zip code for the new cafe!';
+      } else {
+        this.validations.zip.is_valid = true;
+        this.validations.zip.text = '';
+      }
+
+      return validNewCafeForm;
+    },
+
+    /**
+     *
+     */
     submitNewCafe: function submitNewCafe() {
-      this.$store.dispatch('addCafe', {
-        name: this.name,
-        address: this.address,
-        city: this.city,
-        state: this.state,
-        zip: this.zip
-      });
+      if (this.validateNewCafe()) {
+        this.$store.dispatch('addCafe', {
+          name: this.name,
+          address: this.address,
+          city: this.city,
+          state: this.state,
+          zip: this.zip
+        });
+      }
     }
   }
 });
