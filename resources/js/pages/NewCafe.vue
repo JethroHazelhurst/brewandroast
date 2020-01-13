@@ -140,25 +140,25 @@
                 /**
                  * Ensure a state has been entered
                  */
-                if( this.state.trim() == '' ){
-                validNewCafeForm = false;
-                this.validations.state.is_valid = false;
-                this.validations.state.text = 'Please enter a state for the new cafe!';
-                }else{
-                this.validations.state.is_valid = true;
-                this.validations.state.text = '';
+                if (this.state.trim() == '') {
+                    validNewCafeForm = false;
+                    this.validations.state.is_valid = false;
+                    this.validations.state.text = 'Please enter a state for the new cafe!';
+                } else {
+                    this.validations.state.is_valid = true;
+                    this.validations.state.text = '';
                 }
 
                 /**
                  * Ensure a zip has been entered
                  */
-                if( this.zip.trim() == '' || !this.zip.match(/(^\d{5}$)/) ){
-                validNewCafeForm = false;
-                this.validations.zip.is_valid = false;
-                this.validations.zip.text = 'Please enter a valid zip code for the new cafe!';
-                }else{
-                this.validations.zip.is_valid = true;
-                this.validations.zip.text = '';
+                if (this.zip.trim() == '' || !this.zip.match(/(^\d{5}$)/)) {
+                    validNewCafeForm = false;
+                    this.validations.zip.is_valid = false;
+                    this.validations.zip.text = 'Please enter a valid zip code for the new cafe!';
+                } else {
+                    this.validations.zip.is_valid = true;
+                    this.validations.zip.text = '';
                 }
 
                 return validNewCafeForm;
