@@ -19,6 +19,11 @@
  * Chapter 2: Components
  */
 
+span.validation {
+  color: red;
+  display: block;
+}
+
 /**
  * Chapter 3: Layouts
  */
