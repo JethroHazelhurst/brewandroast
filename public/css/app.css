@@ -12,6 +12,23 @@
  */
 
 /**
+ * Chapter 1: Abstracts
+ */
+
+/**
+ * Chapter 2: Components
+ */
+
+/**
+ * Chapter 3: Layouts
+ */
+
+div.page {
+  margin-top: 25px;
+  min-height: calc(100vh - 152px);
+}
+
+/**
  * Foundation for Sites by ZURB
  * Version 6.6.1
  * foundation.zurb.com
