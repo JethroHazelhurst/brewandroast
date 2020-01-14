@@ -60470,6 +60470,7 @@ __webpack_require__.r(__webpack_exports__);
  * Defines the API route we are using.
  */
 var api_url = '';
+var google_maps_js_api = 'AIzaSyAnXyuW1mKEr1rMb383rD7gEVYV-pY9XnE';
 
 switch ("development") {
   case 'development':
