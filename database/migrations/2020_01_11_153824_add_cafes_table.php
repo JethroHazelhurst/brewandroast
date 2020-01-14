@@ -33,6 +33,6 @@ class AddCafesTable extends Migration
      */
     public function down()
     {
-        Schema::drop(‘cafes’);
+        Schema::drop('cafes');
     }
 }
