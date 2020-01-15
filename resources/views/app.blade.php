@@ -18,6 +18,9 @@
                 'csrfToken' => csrf_token(),
             ]); ?>
         </script>
+
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXMiiovpP1o_oC770Iielvy430sC6iQDU"></script>
+
     </head>
     <body>
 
