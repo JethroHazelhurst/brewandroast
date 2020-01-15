@@ -1857,7 +1857,8 @@ __webpack_require__.r(__webpack_exports__);
    */
   data: function data() {
     return {
-      markers: []
+      markers: [],
+      infoWindows: []
     };
   },
 
@@ -1893,34 +1894,63 @@ __webpack_require__.r(__webpack_exports__);
      *
      */
     buildMarkers: function buildMarkers() {
+      var _this = this;
       /*
        * Initialize the markers to an empty array.
        */
+
+
       this.markers = [];
       /*
        * Iterate over all of the cafes.
        */
 
-      for (var i = 0; i < this.cafes.length; i++) {
+      var _loop = function _loop() {
         /*
         * Create the marker for each of the cafes and set the
         * latitude and longitude to the latitude and longitude
         * of the cafe. Also set the map to be the local map.
         */
-        var image = '/img/coffee-marker.png';
-        var marker = new google.maps.Marker({
+        image = '/img/coffee-marker.png';
+        marker = new google.maps.Marker({
           position: {
-            lat: parseFloat(this.cafes[i].latitude),
-            lng: parseFloat(this.cafes[i].longitude)
+            lat: parseFloat(_this.cafes[i].latitude),
+            lng: parseFloat(_this.cafes[i].longitude)
           },
-          map: this.map,
+          map: _this.map,
           icon: image
         });
         /*
          * Push the new marker on to the array.
          */
 
-        this.markers.push(marker);
+        _this.markers.push(marker);
+        /*
+         * Create the info window and add it to the local
+         * array.
+         */
+
+
+        var infoWindow = new google.maps.InfoWindow({
+          content: _this.cafes[i].name
+        });
+
+        _this.infoWindows.push(infoWindow);
+        /*
+         * Add the event listener to open the info window for the marker.
+         */
+
+
+        marker.addListener('click', function () {
+          infoWindow.open(this.map, this);
+        });
+      };
+
+      for (var i = 0; i < this.cafes.length; i++) {
+        var image;
+        var marker;
+
+        _loop();
       }
     }
   },
@@ -60704,15 +60734,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!*******************************************************!*\
   !*** ./resources/js/components/global/Navigation.vue ***!
   \*******************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Navigation_vue_vue_type_template_id_9652e536___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Navigation.vue?vue&type=template&id=9652e536& */ "./resources/js/components/global/Navigation.vue?vue&type=template&id=9652e536&");
 /* harmony import */ var _Navigation_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Navigation.vue?vue&type=script&lang=js& */ "./resources/js/components/global/Navigation.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Navigation_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Navigation_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _Navigation_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Navigation.vue?vue&type=style&index=0&lang=scss& */ "./resources/js/components/global/Navigation.vue?vue&type=style&index=0&lang=scss&");
+/* empty/unused harmony star reexport *//* harmony import */ var _Navigation_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Navigation.vue?vue&type=style&index=0&lang=scss& */ "./resources/js/components/global/Navigation.vue?vue&type=style&index=0&lang=scss&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -60744,7 +60773,7 @@ component.options.__file = "resources/js/components/global/Navigation.vue"
 /*!********************************************************************************!*\
   !*** ./resources/js/components/global/Navigation.vue?vue&type=script&lang=js& ***!
   \********************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
