@@ -72,12 +72,14 @@
                     * latitude and longitude to the latitude and longitude
                     * of the cafe. Also set the map to be the local map.
                     */
+                    var image = '/img/coffee-marker.png';
                     var marker = new google.maps.Marker({
                         position: {
                             lat: parseFloat(this.cafes[i].latitude),
                             lng: parseFloat(this.cafes[i].longitude)
                         },
-                        map: this.map
+                        map: this.map,
+                        icon: image
                     });
 
                     /*
