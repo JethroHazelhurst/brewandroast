@@ -19,9 +19,7 @@
          */
         data(){
             return {
-                markers: [
-
-                ]
+                markers: []
             }
         },
 
@@ -29,8 +27,9 @@
          *
          */
         computed: {
+
             /**
-             * Gets the cafes
+             * Gets the cafes.
              */
             cafes(){
                 return this.$store.getters.getCafes;
@@ -41,44 +40,51 @@
          *
          */
         methods: {
+
             /*
-  Clears the markers from the map.
-*/
-clearMarkers(){
-  /*
-    Iterate over all of the markers and set the map
-    to null so they disappear.
-  */
-  for( var i = 0; i < this.markers.length; i++ ){
-    this.markers[i].setMap( null );
-  }
-},
+             * Clears the markers from the map.
+             */
+            clearMarkers(){
+                /*
+                 * Iterate over all of the markers and set the map to null so they disappear.
+                 */
+                for (var i = 0; i < this.markers.length; i++) {
+                    this.markers[i].setMap(null);
+                }
+            },
+
+            /**
+             *
+             */
             buildMarkers(){
                 /*
-                   Initialize the markers to an empty array.
+                 * Initialize the markers to an empty array.
                  */
-                 this.markers = [];
+                this.markers = [];
 
-                 /*
-                   Iterate over all of the cafes
+                /*
+                 * Iterate over all of the cafes.
                  */
-                 for( var i = 0; i < this.cafes.length; i++ ){
+                for (var i = 0; i < this.cafes.length; i++) {
 
-                   /*
-                     Create the marker for each of the cafes and set the
-                     latitude and longitude to the latitude and longitude
-                     of the cafe. Also set the map to be the local map.
-                   */
-                   var marker = new google.maps.Marker({
-                     position: { lat: parseFloat( this.cafes[i].latitude ), lng: parseFloat( this.cafes[i].longitude ) },
-                     map: this.map
-                   });
+                    /*
+                    * Create the marker for each of the cafes and set the
+                    * latitude and longitude to the latitude and longitude
+                    * of the cafe. Also set the map to be the local map.
+                    */
+                    var marker = new google.maps.Marker({
+                        position: {
+                            lat: parseFloat(this.cafes[i].latitude),
+                            lng: parseFloat(this.cafes[i].longitude)
+                        },
+                        map: this.map
+                    });
 
-                   /*
-                     Push the new marker on to the array.
-                   */
-                   this.markers.push( marker );
-                 }
+                    /*
+                     * Push the new marker on to the array.
+                     */
+                    this.markers.push(marker);
+                }
             }
         },
 
@@ -86,11 +92,11 @@ clearMarkers(){
          *
          */
         watch: {
-    cafes(){
-        this.clearMarkers();
-            this.buildMarkers();
-    }
-},
+            cafes(){
+                this.clearMarkers();
+                this.buildMarkers();
+            }
+        },
 
         /**
          *
@@ -133,10 +139,10 @@ clearMarkers(){
             });
 
             /*
-  Clear and re-build the markers
-*/
-this.clearMarkers();
-this.buildMarkers();
+             * Clear and re-build the markers.
+             */
+            this.clearMarkers();
+            this.buildMarkers();
         }
     }
 </script>

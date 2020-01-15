@@ -1866,7 +1866,7 @@ __webpack_require__.r(__webpack_exports__);
    */
   computed: {
     /**
-     * Gets the cafes
+     * Gets the cafes.
      */
     cafes: function cafes() {
       return this.$store.getters.getCafes;
@@ -1878,31 +1878,34 @@ __webpack_require__.r(__webpack_exports__);
    */
   methods: {
     /*
-    Clears the markers from the map.
-    */
+     * Clears the markers from the map.
+     */
     clearMarkers: function clearMarkers() {
       /*
-        Iterate over all of the markers and set the map
-        to null so they disappear.
-      */
+       * Iterate over all of the markers and set the map to null so they disappear.
+       */
       for (var i = 0; i < this.markers.length; i++) {
         this.markers[i].setMap(null);
       }
     },
+
+    /**
+     *
+     */
     buildMarkers: function buildMarkers() {
       /*
-         Initialize the markers to an empty array.
+       * Initialize the markers to an empty array.
        */
       this.markers = [];
       /*
-        Iterate over all of the cafes
-      */
+       * Iterate over all of the cafes.
+       */
 
       for (var i = 0; i < this.cafes.length; i++) {
         /*
-          Create the marker for each of the cafes and set the
-          latitude and longitude to the latitude and longitude
-          of the cafe. Also set the map to be the local map.
+        * Create the marker for each of the cafes and set the
+        * latitude and longitude to the latitude and longitude
+        * of the cafe. Also set the map to be the local map.
         */
         var marker = new google.maps.Marker({
           position: {
@@ -1912,8 +1915,8 @@ __webpack_require__.r(__webpack_exports__);
           map: this.map
         });
         /*
-          Push the new marker on to the array.
-        */
+         * Push the new marker on to the array.
+         */
 
         this.markers.push(marker);
       }
@@ -1970,8 +1973,8 @@ __webpack_require__.r(__webpack_exports__);
       zoom: this.zoom
     });
     /*
-    Clear and re-build the markers
-    */
+     * Clear and re-build the markers.
+     */
 
     this.clearMarkers();
     this.buildMarkers();
