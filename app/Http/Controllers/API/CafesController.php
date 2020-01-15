@@ -66,8 +66,8 @@ class CafesController extends Controller
         $cafe->city      = $request->get('city');
         $cafe->state     = $request->get('state');
         $cafe->zip       = $request->get('zip');
-        $cafe->latitude  = $request->get('lat');
-        $cafe->longitude = $request->get('lng');
+        $cafe->latitude  = $coordinates['lat'];
+        $cafe->longitude = $coordinates['lng'];
 
         $cafe->save();
 

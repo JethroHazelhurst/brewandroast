@@ -28,7 +28,7 @@ class StoreCafeRequest extends FormRequest
             'address' => 'required',
             'city'    => 'required',
             'state'   => 'required',
-            'zip'     => 'required|regex:/\b\d{5}\b/'
+            'zip'     => 'required'
         ];
     }
 
@@ -44,8 +44,7 @@ class StoreCafeRequest extends FormRequest
             'address.required'  => 'An address is required to add this cafe.',
             'city.required'     => 'A city is required to add this cafe.',
             'state.required'    => 'A state is required to add this cafe.',
-            'zip.required'      => 'A zip code is required to add this cafe.',
-            'zip.regex'         => 'The zip code entered is invalid.'
+            'zip.required'      => 'A zip code is required to add this cafe.'
         ];
     }
 }

@@ -2408,10 +2408,10 @@ __webpack_require__.r(__webpack_exports__);
        */
 
 
-      if (this.zip.trim() == '' || !this.zip.match(/(^\d{5}$)/)) {
+      if (this.zip.trim() == '') {
         validNewCafeForm = false;
         this.validations.zip.is_valid = false;
-        this.validations.zip.text = 'Please enter a valid zip code for the new cafe!';
+        this.validations.zip.text = 'Please enter a postcode for the new cafe!';
       } else {
         this.validations.zip.is_valid = true;
         this.validations.zip.text = '';
