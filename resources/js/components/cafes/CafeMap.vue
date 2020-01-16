@@ -1,7 +1,10 @@
 <style lang="scss">
     #cafe-map {
-        width: 100%;
-        height: 400px;
+        position: absolute;
+        top: 50px;
+        left: 0px;
+        right: 0px;
+        bottom: 100px;
     }
 </style>
 

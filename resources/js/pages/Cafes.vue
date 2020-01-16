@@ -4,14 +4,7 @@
 
 <template>
     <div id="cafes">
-        <div class="grid-x">
-            <div class="large-9 medium-9 small-12 cell">
-                <cafe-map></cafe-map>
-            </div>
-            <div class="large-3 medium-3 small-12 cell">
-
-            </div>
-        </div>
+        <cafe-map></cafe-map>
     </div>
 </template>
 
