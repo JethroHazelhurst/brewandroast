@@ -9,7 +9,16 @@
 </template>
 
 <script>
-  export default {
+    import Loader from '../components/global/Loader.vue';
+    export default {
 
-  }
+        /**
+         * Defines the components used by the page.
+         */
+        components: {
+            Loader
+        },
+
+
+    }
 </script>
