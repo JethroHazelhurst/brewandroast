@@ -2528,8 +2528,9 @@ __webpack_require__.r(__webpack_exports__);
     Navigation: _components_global_Navigation_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   created: function created() {
-    this.$store.dispatch('loadCafes');
     this.$store.dispatch('loadUser');
+    this.$store.dispatch('loadCafes');
+    this.$store.dispatch('loadBrewMethods');
   }
 });
 
