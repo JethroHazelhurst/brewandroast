@@ -28,6 +28,6 @@ class AddedCafesBrewMethods extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('cafes_brew_methods');
     }
 }
