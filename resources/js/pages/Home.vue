@@ -3,24 +3,28 @@
 </style>
 
 <template>
-    <div id="home">
-        <span v-show="cafesLoadStatus == 1">Loading</span>
-        <span v-show="cafesLoadStatus == 2">Cafes loaded successfully!</span>
-        <span v-show="cafesLoadStatus == 3">Cafes loaded unsuccessfully!</span>
+    <div id="cafes" class="page">
+        <cafe-map></cafe-map>
+        <cafe-list></cafe-list>
 
-        <ul>
-            <li v-for="cafe in cafes">{{ cafe.name }}</li>
-        </ul>
+        <router-view></router-view>
     </div>
 </template>
 
 <script>
+    import CafeMap from '../components/cafes/CafeMap.vue';
+    import CafeList from '../components/cafes/CafeList.vue';
     export default {
         /**
          *
          */
         created(){
             this.$store.dispatch('loadCafes');
+        },
+
+        components: {
+            CafeMap,
+            CafeList
         },
 
         /**
