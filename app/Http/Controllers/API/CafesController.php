@@ -21,7 +21,11 @@ class CafesController extends Controller
     */
     public function getCafes()
     {
-        $cafes = Cafe::all();
+        /**
+         * When we load the cafes, we also want to load the brew methods associated with the Cafe.
+         * We want to do this by calling the relationship method on the model when we retrieve our data.
+         */
+        $cafes = Cafe::with('brewMethods')->get();
         return response()->json($cafes);
     }
 
@@ -37,7 +41,9 @@ class CafesController extends Controller
     */
     public function getCafe($id)
     {
-        $cafe = Cafe::where('id', '=', $id)->first();
+        $cafe = Cafe::where('id', '=', $id)
+            ->with('brewMethods')
+            ->first();
 
         return response()->json($cafe);
     }
