@@ -14,6 +14,7 @@ Vue.use( Vuex );
  */
 import { users } from './modules/users.js';
 import { cafes } from './modules/cafes.js';
+import { brewMethods } from './modules/brewMethods.js';
 
 /**
  * Import all of the modules used in the application to build the data store.
@@ -21,6 +22,7 @@ import { cafes } from './modules/cafes.js';
 export default new Vuex.Store({
     modules: {
         users,
-        cafes
+        cafes,
+        brewMethods
     }
 });

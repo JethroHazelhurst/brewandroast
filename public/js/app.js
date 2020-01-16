@@ -61051,6 +61051,31 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./resources/js/api/brewMethod.js":
+/*!****************************************!*\
+  !*** ./resources/js/api/brewMethod.js ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _config_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../config.js */ "./resources/js/config.js");
+/*
+ * Imports the Roast API URL from the config.
+ */
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  /*
+   * GET /api/v1/brew-methods
+   */
+  getBrewMethods: function getBrewMethods() {
+    return axios.get(_config_js__WEBPACK_IMPORTED_MODULE_0__["ROAST_CONFIG"].API_URL + '/brew-methods');
+  }
+});
+
+/***/ }),
+
 /***/ "./resources/js/api/cafe.js":
 /*!**********************************!*\
   !*** ./resources/js/api/cafe.js ***!
@@ -61650,6 +61675,104 @@ switch ("development") {
 
 var ROAST_CONFIG = {
   API_URL: api_url
+};
+
+/***/ }),
+
+/***/ "./resources/js/modules/brewMethods.js":
+/*!*********************************************!*\
+  !*** ./resources/js/modules/brewMethods.js ***!
+  \*********************************************/
+/*! exports provided: brewMethods */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "brewMethods", function() { return brewMethods; });
+/* harmony import */ var _api_brewMethod_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../api/brewMethod.js */ "./resources/js/api/brewMethod.js");
+/*
+ |-------------------------------------------------------------------------------
+ | VUEX modules/brewmethods.js
+ |-------------------------------------------------------------------------------
+ | The Vuex data store for the brew methods
+ */
+
+var brewMethods = {
+  /*
+   * Defines the state being monitored for the module.
+   */
+  state: {
+    brewMethods: [],
+    brewMethodsLoadStatus: 0
+  },
+
+  /*
+   * Defines the actions used by the Vuex module.
+   */
+  actions: {
+    /*
+     * Loads all of the brew methods.
+     */
+    loadBrewMethods: function loadBrewMethods(_ref) {
+      var commit = _ref.commit;
+      commit('setBrewMethodsLoadStatus', 1);
+      /*
+       * Calls the API to load the brew methods.
+       */
+
+      _api_brewMethod_js__WEBPACK_IMPORTED_MODULE_0__["default"].getBrewMethods().then(function (response) {
+        /*
+         * Sets the brew methods on a successful response.
+         */
+        commit('setBrewMethods', response.data);
+        commit('setBrewMethodsLoadStatus', 2);
+      })["catch"](function () {
+        /*
+         * Clears the brew methods on failure.
+         */
+        commit('setBrewMethods', []);
+        commit('setBrewMethodsLoadStatus', 3);
+      });
+    }
+  },
+
+  /*
+   * Defines the mutations used by the module.
+   */
+  mutations: {
+    /*
+     * Sets the brew method load status.
+     */
+    setBrewMethodsLoadStatus: function setBrewMethodsLoadStatus(state, status) {
+      state.brewMethodsLoadStatus = status;
+    },
+
+    /*
+     * Sets the brew methods.
+     */
+    setBrewMethods: function setBrewMethods(state, brewMethods) {
+      state.brewMethods = brewMethods;
+    }
+  },
+
+  /*
+   * Defines the getters used by the module.
+   */
+  getters: {
+    /*
+     * Returns the brew methods.
+     */
+    getBrewMethods: function getBrewMethods(state) {
+      return state.brewMethods;
+    },
+
+    /*
+     * Returns the brew methods load status.
+     */
+    getBrewMethodsLoadStatus: function getBrewMethodsLoadStatus(state) {
+      return state.brewMethodsLoadStatus;
+    }
+  }
 };
 
 /***/ }),
@@ -62367,6 +62490,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _modules_users_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/users.js */ "./resources/js/modules/users.js");
 /* harmony import */ var _modules_cafes_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/cafes.js */ "./resources/js/modules/cafes.js");
+/* harmony import */ var _modules_brewMethods_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/brewMethods.js */ "./resources/js/modules/brewMethods.js");
 /**
  * Import vue and vuex.
  */
@@ -62383,6 +62507,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
 
 
 
+
 /**
  * Import all of the modules used in the application to build the data store.
  */
@@ -62390,7 +62515,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
 /* harmony default export */ __webpack_exports__["default"] = (new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   modules: {
     users: _modules_users_js__WEBPACK_IMPORTED_MODULE_2__["users"],
-    cafes: _modules_cafes_js__WEBPACK_IMPORTED_MODULE_3__["cafes"]
+    cafes: _modules_cafes_js__WEBPACK_IMPORTED_MODULE_3__["cafes"],
+    brewMethods: _modules_brewMethods_js__WEBPACK_IMPORTED_MODULE_4__["brewMethods"]
   }
 }));
 
