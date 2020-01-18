@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class BrewMethods extends Model
+class BrewMethod extends Model
 {
     protected $table = 'brew_methods';
 
