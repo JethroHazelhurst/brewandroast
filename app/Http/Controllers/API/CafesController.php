@@ -77,6 +77,12 @@ class CafesController extends Controller
 
         $cafe->save();
 
+        /*
+         * Sync the brew methods on the cafe
+         */
+        $brewMethods = $request->get('brew_methods');
+        $cafe->brewMethods()->sync($brewMethods);
+
         return response()->json($cafe, 201);
     }
 }
