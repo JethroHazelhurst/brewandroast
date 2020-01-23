@@ -101,11 +101,15 @@ export const cafes = {
          * Loads an individual cafe from the api.
          */
         loadCafe({commit}, data){
+            commit('setCafeLikedStatus', false);
             commit('setCafeLoadStatus', 1);
             CafeAPI.getCafe()
                 .then(function(response){
                     commit('setCafe ', response.data);
-                    commit('setCafeLoadStatus', 2);
+                    if (response.data.user_like.length > 0){
+                        commit('setCafeLikedStatus', true);
+                    }
+                    commit( 'setCafeLoadStatus', 2 );
                 })
                 .catch(function(){
                     commit('setCafe', {});

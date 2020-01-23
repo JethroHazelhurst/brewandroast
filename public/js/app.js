@@ -62453,9 +62453,15 @@ var cafes = {
      */
     loadCafe: function loadCafe(_ref5, data) {
       var commit = _ref5.commit;
+      commit('setCafeLikedStatus', false);
       commit('setCafeLoadStatus', 1);
       _api_cafe_js__WEBPACK_IMPORTED_MODULE_0__["default"].getCafe().then(function (response) {
         commit('setCafe ', response.data);
+
+        if (response.data.user_like.length > 0) {
+          commit('setCafeLikedStatus', true);
+        }
+
         commit('setCafeLoadStatus', 2);
       })["catch"](function () {
         commit('setCafe', {});

@@ -41,7 +41,7 @@ class User extends Authenticatable
     /**
      *
      */
-    public function()
+    public function likes()
     {
         return $this->belongsToMany( 'App\Models\Cafe', 'users_cafes_likes', 'user_id', 'cafe_id');
     }
