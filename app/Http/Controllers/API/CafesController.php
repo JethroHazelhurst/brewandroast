@@ -43,6 +43,7 @@ class CafesController extends Controller
     {
         $cafe = Cafe::where('id', '=', $id)
             ->with('brewMethods')
+            ->with('userLike')
             ->first();
 
         return response()->json($cafe);
