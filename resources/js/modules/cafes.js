@@ -19,13 +19,51 @@ export const cafes = {
         cafe: {},
         cafeLoadStatus: 0,
 
-        cafeAddStatus: 0
+        cafeAddStatus: 0,
+
+        cafeLikeActionStatus: 0,
+        cafeUnlikeActionStatus: 0,
+
+        cafeLiked: false,
+
     },
 
     /**
      * Retrieves the data.
      */
     actions: {
+
+        /*
+         * Likes a cafe
+         */
+        likeCafe({commit, state}, data){
+            commit('setCafeLikeActionStatus', 1);
+
+            CafeAPI.postLikeCafe( data.id )
+            .then( function( response ){
+                commit('setCafeLikedStatus', true);
+                commit('setCafeLikeActionStatus', 2);
+            })
+            .catch(function(){
+                commit('setCafeLikeActionStatus', 3);
+            });
+        },
+
+        /*
+         * Unlikes a cafe
+         */
+        unlikeCafe({commit, state}, data){
+            commit('setCafeUnlikeActionStatus', 1);
+
+            CafeAPI.deleteLikeCafe(data.id)
+            .then(function(response){
+                commit('setCafeLikedStatus', false);
+                commit('setCafeUnlikeActionStatus', 2);
+            })
+            .catch(function(){
+                commit('setCafeUnlikeActionStatus', 3);
+            });
+        }
 
         /**
          * Adds a cafe.
