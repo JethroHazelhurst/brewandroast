@@ -152,8 +152,29 @@ export const cafes = {
         /**
          * Set the cafe add status.
          */
-        setCafeAddedStatus( state, status ){
+        setCafeAddedStatus(state, status){
             state.cafeAddStatus = status;
+        },
+
+        /*
+         * Set the cafe liked status
+         */
+        setCafeLikedStatus(state, status){
+            state.cafeLiked = status;
+        },
+
+        /*
+         * Set the cafe like action status
+         */
+        setCafeLikeActionStatus(state, status){
+            state.cafeLikeActionStatus = status;
+        },
+
+        /*
+         * Set the cafe unlike action status
+         */
+        setCafeUnlikeActionStatus(state, status){
+            state.cafeUnlikeActionStatus = status;
         }
     },
 
@@ -192,8 +213,29 @@ export const cafes = {
         /*
          * Gets the cafe add status.
          */
-        getCafeAddStatus( state ){
+        getCafeAddStatus(state){
             return state.cafeAddStatus;
+        },
+
+        /*
+         * Gets the cafe liked status
+         */
+        getCafeLikedStatus(state){
+            return state.cafeLiked;
+        },
+
+        /*
+         * Gets the cafe liked action status
+         */
+        getCafeLikeActionStatus(state){
+            return state.cafeLikeActionStatus;
+        },
+
+        /*
+         * Gets the cafe un-like action status
+         */
+        getCafeUnlikeActionStatus(state){
+            return state.cafeUnlikeActionStatus;
         }
     }
 }
