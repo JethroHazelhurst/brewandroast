@@ -2366,6 +2366,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   computed: {
     userLoadStatus: function userLoadStatus() {
@@ -2600,6 +2605,36 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/**
+ *
+ */
 /* harmony default export */ __webpack_exports__["default"] = ({
   /**
    *
@@ -2607,15 +2642,112 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       name: '',
-      address: '',
-      city: '',
-      state: '',
-      zip: '',
+      locations: [],
+      website: '',
+      description: '',
+      roaster: false,
       validations: {
         name: {
           is_valid: true,
           text: ''
         },
+        website: {
+          is_valid: true,
+          text: ''
+        },
+        locations: [],
+        oneLocation: {
+          is_valid: true,
+          text: ''
+        }
+      }
+    };
+  },
+
+  /**
+   *
+   */
+  computed: {
+    /**
+     *
+     */
+    brewMethods: function brewMethods() {
+      return this.$store.getters.getBrewMethods;
+    },
+
+    /**
+     *
+     */
+    addCafeStatus: function addCafeStatus() {
+      return this.$store.getters.getCafeAddStatus;
+    }
+  },
+
+  /**
+   *
+   */
+  watch: {
+    'addCafeStatus': function addCafeStatus() {
+      if (this.addCafeStatus == 2) {
+        this.clearForm();
+        $("#cafe-added-successfully").show().delay(5000).fadeOut();
+      }
+
+      if (this.addCafeStatus == 3) {
+        $("#cafe-added-unsuccessfully").show().delay(5000).fadeOut();
+      }
+    }
+  },
+
+  /**
+   *
+   */
+  methods: {
+    clearForm: function clearForm() {
+      this.name = '';
+      this.locations = [];
+      this.website = '';
+      this.description = '';
+      this.roaster = false;
+      this.validations = {
+        name: {
+          is_valid: true,
+          text: ''
+        },
+        locations: [],
+        oneLocation: {
+          is_valid: true,
+          text: ''
+        },
+        website: {
+          is_valid: true,
+          text: ''
+        }
+      };
+      this.addLocation();
+    },
+
+    /**
+     *
+     */
+    removeLocation: function removeLocation(key) {
+      this.locations.splice(key, 1);
+      this.validations.locations.splice(key, 1);
+    },
+
+    /**
+     *
+     */
+    addLocation: function addLocation() {
+      this.locations.push({
+        name: '',
+        address: '',
+        city: '',
+        state: '',
+        zip: '',
+        methodssAvailable: []
+      });
+      this.validations.locations.push({
         address: {
           is_valid: true,
           text: ''
@@ -2632,82 +2764,97 @@ __webpack_require__.r(__webpack_exports__);
           is_valid: true,
           text: ''
         }
-      }
-    };
-  },
+      });
+    },
 
-  /**
-   *
-   */
-  methods: {
     /**
      *
      */
     validateNewCafe: function validateNewCafe() {
       var validNewCafeForm = true;
-      /**
+      /*
        * Ensure a name has been entered
        */
 
       if (this.name.trim() == '') {
         validNewCafeForm = false;
         this.validations.name.is_valid = false;
-        this.validations.name.text = "Please enter a name for the new cafe!";
+        this.validations.name.text = 'Please enter a name for the company.';
       } else {
         this.validations.name.is_valid = true;
         this.validations.name.text = '';
       }
-      /**
-       * Ensure an address has been entered
+      /*
+       * If a website has been entered, ensure the URL is valid
        */
 
 
-      if (this.address.trim() == '') {
+      if (this.website.trim != '' && !this.website.match(/^((https?):\/\/)?([w|W]{3}\.)+[a-zA-Z0-9\-\.]{3,}\.[a-zA-Z]{2,}(\.[a-zA-Z]{2,})?$/)) {
         validNewCafeForm = false;
-        this.validations.address.is_valid = false;
-        this.validations.address.text = 'Please enter an address for the new cafe!';
+        this.validations.website.is_valid = false;
+        this.validations.website.text = 'Please enter a valid URL for the website!';
       } else {
-        this.validations.address.is_valid = true;
-        this.validations.address.text = '';
+        this.validations.website.is_valid = true;
+        this.validations.website.text = '';
       }
-      /**
-       * Ensure a city has been entered
+      /*
+       * Ensure all locations entered are valid
        */
 
 
-      if (this.city.trim() == '') {
-        validNewCafeForm = false;
-        this.validations.city.is_valid = false;
-        this.validations.city.text = 'Please enter a city for the new cafe!';
-      } else {
-        this.validations.city.is_valid = true;
-        this.validations.city.text = '';
-      }
-      /**
-       * Ensure a state has been entered
-       */
+      for (var index in this.locations) {
+        if (this.locations.hasOwnProperty(index)) {
+          /*
+           * Ensure an address has been entered
+           */
+          if (this.locations[index].address.trim() == '') {
+            validNewCafeForm = false;
+            this.validations.locations[index].address.is_valid = false;
+            this.validations.locations[index].address.text = 'Please enter an address for the new cafe!';
+          } else {
+            this.validations.locations[index].address.is_valid = true;
+            this.validations.locations[index].address.text = '';
+          }
+        }
+        /*
+         * Ensure a city has been entered
+         */
 
 
-      if (this.state.trim() == '') {
-        validNewCafeForm = false;
-        this.validations.state.is_valid = false;
-        this.validations.state.text = 'Please enter a state for the new cafe!';
-      } else {
-        this.validations.state.is_valid = true;
-        this.validations.state.text = '';
-      }
-      /**
-       * Ensure a zip has been entered
-       */
+        if (this.locations[index].city.trim() == '') {
+          validNewCafeForm = false;
+          this.validations.locations[index].city.is_valid = false;
+          this.validations.locations[index].city.text = 'Please enter a city for the new cafe!';
+        } else {
+          this.validations.locations[index].city.is_valid = true;
+          this.validations.locations[index].city.text = '';
+        }
+        /*
+         * Ensure a state has been entered
+         */
 
 
-      if (this.zip.trim() == '') {
-        validNewCafeForm = false;
-        this.validations.zip.is_valid = false;
-        this.validations.zip.text = 'Please enter a postcode for the new cafe!';
-      } else {
-        this.validations.zip.is_valid = true;
-        this.validations.zip.text = '';
+        if (this.locations[index].state.trim() == '') {
+          validNewCafeForm = false;
+          this.validations.locations[index].state.is_valid = false;
+          this.validations.locations[index].state.text = 'Please enter a state for the new cafe!';
+        } else {
+          this.validations.locations[index].state.is_valid = true;
+          this.validations.locations[index].state.text = '';
+        }
+        /*
+         * Ensure a zip has been entered
+         */
+
+
+        if (this.locations[index].zip.trim() == '' || !this.locations[index].zip.match(/(^\d{5}$)/)) {
+          validNewCafeForm = false;
+          this.validations.locations[index].zip.is_valid = false;
+          this.validations.locations[index].zip.text = 'Please enter a valid zip code for the new cafe!';
+        } else {
+          this.validations.locations[index].zip.is_valid = true;
+          this.validations.locations[index].zip.text = '';
+        }
       }
 
       return validNewCafeForm;
@@ -2720,13 +2867,20 @@ __webpack_require__.r(__webpack_exports__);
       if (this.validateNewCafe()) {
         this.$store.dispatch('addCafe', {
           name: this.name,
-          address: this.address,
-          city: this.city,
-          state: this.state,
-          zip: this.zip
+          locations: this.locations,
+          website: this.website,
+          description: this.description,
+          roaster: this.roaster
         });
       }
     }
+  },
+
+  /**
+   *
+   */
+  created: function created() {
+    this.addLocation();
   }
 });
 
@@ -44535,6 +44689,16 @@ var render = function() {
             ])
           ],
           1
+        ),
+        _vm._v(" "),
+        _c(
+          "li",
+          [
+            _c("router-link", { attrs: { to: { name: "newcafe" } } }, [
+              _vm._v("\n                New Cafe\n            ")
+            ])
+          ],
+          1
         )
       ]),
       _vm._v(" "),
@@ -44692,238 +44856,363 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "page" }, [
     _c("form", [
-      _c("div", { staticClass: "grid-container" }, [
-        _c("div", { staticClass: "grid-x grid-padding-x" }, [
-          _c("div", { staticClass: "large-12 medium-12 small-12 cell" }, [
-            _c("label", [
-              _vm._v("Name\n                        "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.name,
-                    expression: "name"
-                  }
-                ],
-                attrs: { type: "text", placeholder: "Cafe name" },
-                domProps: { value: _vm.name },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+      _c(
+        "div",
+        { staticClass: "grid-container" },
+        _vm._l(_vm.locations, function(location, key) {
+          return _c("div", { staticClass: "grid-x grid-padding-x" }, [
+            _vm._m(0, true),
+            _vm._v(" "),
+            _c("div", { staticClass: "large-6 medium-6 small-12 cell" }, [
+              _c("label", [
+                _vm._v(
+                  "\n                        Location Name\n                        "
+                ),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.locations[key].name,
+                      expression: "locations[key].name"
                     }
-                    _vm.name = $event.target.value
+                  ],
+                  attrs: { type: "text", placeholder: "Location Name" },
+                  domProps: { value: _vm.locations[key].name },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.locations[key], "name", $event.target.value)
+                    }
                   }
-                }
-              })
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "large-6 medium-6 small-12 cell" }, [
+              _c("label", [
+                _vm._v(
+                  "\n                        Address\n                        "
+                ),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.locations[key].address,
+                      expression: "locations[key].address"
+                    }
+                  ],
+                  attrs: { type: "text", placeholder: "Address" },
+                  domProps: { value: _vm.locations[key].address },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.locations[key],
+                        "address",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c(
+                "span",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: !_vm.validations.locations[key].address.is_valid,
+                      expression: "!validations.locations[key].address.is_valid"
+                    }
+                  ],
+                  staticClass: "validation"
+                },
+                [
+                  _vm._v(
+                    "\n                        " +
+                      _vm._s(_vm.validations.locations[key].address.text) +
+                      "\n                    "
+                  )
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "large-6 medium-6 small-12 cell" }, [
+              _c("label", [
+                _vm._v(
+                  "\n                        City\n                        "
+                ),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.locations[key].city,
+                      expression: "locations[key].city"
+                    }
+                  ],
+                  attrs: { type: "text", placeholder: "City" },
+                  domProps: { value: _vm.locations[key].city },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.locations[key], "city", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c(
+                "span",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: !_vm.validations.locations[key].city.is_valid,
+                      expression: "!validations.locations[key].city.is_valid"
+                    }
+                  ],
+                  staticClass: "validation"
+                },
+                [
+                  _vm._v(
+                    "\n                        " +
+                      _vm._s(_vm.validations.locations[key].city.text) +
+                      "\n                    "
+                  )
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "large-6 medium-6 small-12 cell" }, [
+              _c("label", [
+                _vm._v(
+                  "\n                        State\n                        "
+                ),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.locations[key].state,
+                      expression: "locations[key].state"
+                    }
+                  ],
+                  attrs: { type: "text", placeholder: "State" },
+                  domProps: { value: _vm.locations[key].state },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.locations[key], "state", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c(
+                "span",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: !_vm.validations.locations[key].state.is_valid,
+                      expression: "!validations.locations[key].state.is_valid"
+                    }
+                  ],
+                  staticClass: "validation"
+                },
+                [
+                  _vm._v(
+                    "\n                        " +
+                      _vm._s(_vm.validations.locations[key].state.text) +
+                      "\n                    "
+                  )
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "large-6 medium-6 small-12 cell" }, [
+              _c("label", [
+                _vm._v(
+                  "\n                        Zip\n                        "
+                ),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.locations[key].zip,
+                      expression: "locations[key].zip"
+                    }
+                  ],
+                  attrs: { type: "text", placeholder: "Zip" },
+                  domProps: { value: _vm.locations[key].zip },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.locations[key], "zip", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c(
+                "span",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: !_vm.validations.locations[key].zip.is_valid,
+                      expression: "!validations.locations[key].zip.is_valid"
+                    }
+                  ],
+                  staticClass: "validation"
+                },
+                [
+                  _vm._v(
+                    "\n                        " +
+                      _vm._s(_vm.validations.locations[key].zip.text) +
+                      "\n                    "
+                  )
+                ]
+              )
             ]),
             _vm._v(" "),
             _c(
-              "span",
-              {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: !_vm.validations.name.is_valid,
-                    expression: "!validations.name.is_valid"
-                  }
-                ],
-                staticClass: "validation"
-              },
-              [_vm._v(_vm._s(_vm.validations.name.text))]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "large-12 medium-12 small-12 cell" }, [
-            _c("label", [
-              _vm._v("Address\n                        "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.address,
-                    expression: "address"
-                  }
-                ],
-                attrs: { type: "text", placeholder: "Address" },
-                domProps: { value: _vm.address },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.address = $event.target.value
-                  }
-                }
-              })
-            ]),
+              "div",
+              { staticClass: "large-12 medium-12 small-12 cell" },
+              [
+                _c("label", [_vm._v("Brew Methods Available")]),
+                _vm._v(" "),
+                _vm._l(_vm.brewMethods, function(brewMethod) {
+                  return _c("span", { staticClass: "brew-method" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.locations[key].methodsAvailable,
+                          expression: "locations[key].methodsAvailable"
+                        }
+                      ],
+                      attrs: {
+                        id: "brew-method-" + brewMethod.id + "-" + key,
+                        type: "checkbox"
+                      },
+                      domProps: {
+                        value: brewMethod.id,
+                        checked: Array.isArray(
+                          _vm.locations[key].methodsAvailable
+                        )
+                          ? _vm._i(
+                              _vm.locations[key].methodsAvailable,
+                              brewMethod.id
+                            ) > -1
+                          : _vm.locations[key].methodsAvailable
+                      },
+                      on: {
+                        change: function($event) {
+                          var $$a = _vm.locations[key].methodsAvailable,
+                            $$el = $event.target,
+                            $$c = $$el.checked ? true : false
+                          if (Array.isArray($$a)) {
+                            var $$v = brewMethod.id,
+                              $$i = _vm._i($$a, $$v)
+                            if ($$el.checked) {
+                              $$i < 0 &&
+                                _vm.$set(
+                                  _vm.locations[key],
+                                  "methodsAvailable",
+                                  $$a.concat([$$v])
+                                )
+                            } else {
+                              $$i > -1 &&
+                                _vm.$set(
+                                  _vm.locations[key],
+                                  "methodsAvailable",
+                                  $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                                )
+                            }
+                          } else {
+                            _vm.$set(
+                              _vm.locations[key],
+                              "methodsAvailable",
+                              $$c
+                            )
+                          }
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "label",
+                      {
+                        attrs: {
+                          for: "brew-method-" + brewMethod.id + "-" + key
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(brewMethod.method) +
+                            "\n                        "
+                        )
+                      ]
+                    )
+                  ])
+                })
+              ],
+              2
+            ),
             _vm._v(" "),
-            _c(
-              "span",
-              {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: !_vm.validations.address.is_valid,
-                    expression: "!validations.address.is_valid"
-                  }
-                ],
-                staticClass: "validation"
-              },
-              [_vm._v(_vm._s(_vm.validations.address.text))]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "large-12 medium-12 small-12 cell" }, [
-            _c("label", [
-              _vm._v("City\n                        "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.city,
-                    expression: "city"
-                  }
-                ],
-                attrs: { type: "text", placeholder: "City" },
-                domProps: { value: _vm.city },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+            _c("div", { staticClass: "large-12 medium-12 small-12 cell" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "button",
+                  on: {
+                    click: function($event) {
+                      return _vm.removeLocation(key)
                     }
-                    _vm.city = $event.target.value
                   }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c(
-              "span",
-              {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: !_vm.validations.city.is_valid,
-                    expression: "!validations.city.is_valid"
-                  }
-                ],
-                staticClass: "validation"
-              },
-              [_vm._v(_vm._s(_vm.validations.city.text))]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "large-12 medium-12 small-12 cell" }, [
-            _c("label", [
-              _vm._v("State\n                        "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.state,
-                    expression: "state"
-                  }
-                ],
-                attrs: { type: "text", placeholder: "State" },
-                domProps: { value: _vm.state },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.state = $event.target.value
-                  }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c(
-              "span",
-              {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: !_vm.validations.state.is_valid,
-                    expression: "!validations.state.is_valid"
-                  }
-                ],
-                staticClass: "validation"
-              },
-              [_vm._v(_vm._s(_vm.validations.state.text))]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "large-12 medium-12 small-12 cell" }, [
-            _c("label", [
-              _vm._v("Zip\n                        "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.zip,
-                    expression: "zip"
-                  }
-                ],
-                attrs: { type: "text", placeholder: "Zip" },
-                domProps: { value: _vm.zip },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.zip = $event.target.value
-                  }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c(
-              "span",
-              {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: !_vm.validations.zip.is_valid,
-                    expression: "!validations.zip.is_valid"
-                  }
-                ],
-                staticClass: "validation"
-              },
-              [_vm._v(_vm._s(_vm.validations.zip.text))]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "large-12 medium-12 small-12 cell" }, [
-            _c(
-              "a",
-              {
-                staticClass: "button",
-                on: {
-                  click: function($event) {
-                    return _vm.submitNewCafe()
-                  }
-                }
-              },
-              [_vm._v("Add Cafe")]
-            )
+                },
+                [_vm._v("Remove Location")]
+              )
+            ])
           ])
-        ])
-      ])
+        }),
+        0
+      )
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "large-12 medium-12 small-12 cell" }, [
+      _c("h3", [_vm._v("Location")])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -61112,10 +61401,10 @@ __webpack_require__.r(__webpack_exports__);
   postAddNewCafe: function postAddNewCafe(name, address, city, state, zip) {
     return axios.post(_config_js__WEBPACK_IMPORTED_MODULE_0__["ROAST_CONFIG"].API_URL + '/cafes', {
       name: name,
-      address: address,
-      city: city,
-      state: state,
-      zip: zip
+      locations: locations,
+      website: website,
+      description: description,
+      roaster: roaster
     });
   }
 });
@@ -61820,7 +62109,7 @@ var cafes = {
           state = _ref.state,
           dispatch = _ref.dispatch;
       commit('setCafeAddedStatus', 1);
-      _api_cafe_js__WEBPACK_IMPORTED_MODULE_0__["default"].postAddNewCafe(data.name, data.address, data.city, data.state, data.zip).then(function (response) {
+      _api_cafe_js__WEBPACK_IMPORTED_MODULE_0__["default"].postAddNewCafe(data.name, data.locations, data.website, data.description, data.roaster).then(function (response) {
         commit('setCafeAddedStatus', 2);
         dispatch('loadCafes');
       })["catch"](function () {
