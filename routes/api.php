@@ -52,4 +52,26 @@ Route::group(['prefix' => 'v1', 'middleware' => 'auth:api'], function(){
     */
     Route::get('/brew-methods', 'API\BrewMethodsController@getBrewMethods');
 
+    /*
+    |-------------------------------------------------------------------------------
+    | Likes a Cafe
+    |-------------------------------------------------------------------------------
+    | URL:            /api/v1/cafes/{id}/like
+    | Controller:     API\CafesController@postLikeCafe
+    | Method:         POST
+    | Description:    Likes a cafe for the authenticated user.
+    */
+    Route::post('/cafes/{id}/like', 'API\CafesController@postLikeCafe');
+
+    /*
+    |-------------------------------------------------------------------------------
+    | Un-Likes a Cafe
+    |-------------------------------------------------------------------------------
+    | URL:            /api/v1/cafes/{id}/like
+    | Controller:     API\CafesController@deleteLikeCafe
+    | Method:         DELETE
+    | Description:    Un-Likes a cafe for the authenticated user.
+    */
+    Route::delete('/cafes/{id}/like', 'API\CafesController@deleteLikeCafe');
+
 });
