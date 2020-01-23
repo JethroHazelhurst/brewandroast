@@ -11,6 +11,21 @@ class Cafe extends Model
     /**
      *
      */
+    public function children(){
+        return $this->hasMany('App\Models\Cafe', 'parent', 'id');
+
+    }
+
+    /**
+     *
+     */
+    public function parent(){
+        return $this->hasOne('App\Models\Cafe', 'id', 'parent');
+    }
+
+    /**
+     *
+     */
     public function brewMethods(){
         return $this->belongsToMany( 'App\Models\BrewMethod', 'cafes_brew_methods', 'cafe_id', 'brew_method_id' );
     }
