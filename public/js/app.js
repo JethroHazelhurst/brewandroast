@@ -2213,6 +2213,63 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/global/Loader.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/babel-loader/lib??ref--11-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/global/Loader.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  /*
+   * Accepts a width, height and display style as property.
+   */
+  props: {
+    'width': Number,
+    'height': Number,
+    'display': {
+      "default": 'block'
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/global/Navigation.vue?vue&type=script&lang=js&":
 /*!***********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/babel-loader/lib??ref--11-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/global/Navigation.vue?vue&type=script&lang=js& ***!
@@ -2336,6 +2393,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_global_Loader_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/global/Loader.vue */ "./resources/js/components/global/Loader.vue");
+/* harmony import */ var _components_cafes_CafeMap_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/cafes/CafeMap.vue */ "./resources/js/components/cafes/CafeMap.vue");
 //
 //
 //
@@ -2353,77 +2412,119 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/*
+ * Import the loader and cafe map for use in the component.
+ */
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   /*
-   * Defines the computed properties on the component.
+   * Defines the components used by the page.
+   */
+  components: {
+    Loader: _components_global_Loader_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+    IndividualCafeMap: _components_cafes_CafeMap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+
+  /*
+   * When created, load the cafe based on the ID in the
+   * route parameter.
+   */
+  created: function created() {
+    this.$store.dispatch('loadCafe', {
+      id: this.$route.params.id
+    });
+  },
+
+  /*
+   * Defines the computed variables on the cafe.
    */
   computed: {
     /*
-     * Gets the cafe load status from the Vuex state.
+     * Grabs the cafe load status from the Vuex state.
      */
     cafeLoadStatus: function cafeLoadStatus() {
       return this.$store.getters.getCafeLoadStatus;
     },
 
     /*
-     * Gets the cafe from the Vuex state.
+     * Grabs the cafe from the Vuex state.
      */
     cafe: function cafe() {
       return this.$store.getters.getCafe;
-    }
-  },
-
-  /*
-   * Defines the variables we need to watch on the component.
-   */
-  watch: {
-    /*
-    The cafe load status. When the cafe load status equals 2
-    we display the individual cafe map. We have to wait until the
-    cafe is loaded so we get the lat and long for the cafe.
-    */
-    cafeLoadStatus: function cafeLoadStatus() {
-      if (this.cafeLoadStatus == 2) {
-        this.displayIndividualCafeMap();
-      }
-    }
-  },
-
-  /*
-  Defines the methods used by the component.
-  */
-  methods: {
-    /*
-    Displays the individual cafe map.
-    */
-    displayIndividualCafeMap: function displayIndividualCafeMap() {
-      /*
-      Builds the individual cafe map.
-      */
-      this.map = new google.maps.Map(document.getElementById('individual-cafe-map'), {
-        center: {
-          lat: parseFloat(this.cafe.latitude),
-          lng: parseFloat(this.cafe.longitude)
-        },
-        zoom: 13
-      });
-      /*
-      Defines the image used for the marker.
-      */
-
-      var image = '/img/coffee-marker.png';
-      /*
-      Builds the marker for the cafe on the map.
-      */
-
-      var marker = new google.maps.Marker({
-        position: {
-          lat: parseFloat(this.cafe.latitude),
-          lng: parseFloat(this.cafe.longitude)
-        },
-        map: this.map,
-        icon: image
-      });
     }
   }
 });
@@ -2957,6 +3058,25 @@ exports.push([module.i, "#cafe-map {\n  position: absolute;\n  top: 50px;\n  lef
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/global/Loader.vue?vue&type=style&index=0&lang=scss&":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/global/Loader.vue?vue&type=style&index=0&lang=scss& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "div.loader {\n  margin: auto;\n  vertical-align: middle;\n}\nsvg path,\nsvg rect {\n  fill: #E8635F;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/global/Navigation.vue?vue&type=style&index=0&lang=scss&":
 /*!***************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/global/Navigation.vue?vue&type=style&index=0&lang=scss& ***!
@@ -2988,7 +3108,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "div#individual-cafe-map {\n  width: 700px;\n  height: 500px;\n  margin: auto;\n  margin-bottom: 200px;\n}", ""]);
+exports.push([module.i, "div.cafe-page h2 {\n  text-align: center;\n  color: #342C0C;\n  font-family: \"Josefin Sans\", sans-serif;\n}\ndiv.cafe-page h3 {\n  text-align: center;\n  color: #E8635F;\n  font-family: \"Josefin Sans\", sans-serif;\n}\ndiv.cafe-page span.address {\n  text-align: center;\n  display: block;\n  font-family: \"Lato\", sans-serif;\n  color: #A0A0A0;\n  font-size: 20px;\n  line-height: 30px;\n  margin-top: 50px;\n}\ndiv.cafe-page a.website {\n  text-align: center;\n  color: #CCAF80;\n  font-size: 30px;\n  font-weight: bold;\n  margin-top: 50px;\n  display: block;\n  font-family: \"Josefin Sans\", sans-serif;\n}\ndiv.cafe-page div.brew-methods-container {\n  max-width: 700px;\n  margin: auto;\n}\ndiv.cafe-page div.brew-methods-container div.cell {\n  text-align: center;\n}", ""]);
 
 // exports
 
@@ -43815,6 +43935,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/global/Loader.vue?vue&type=style&index=0&lang=scss&":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/global/Loader.vue?vue&type=style&index=0&lang=scss& ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--7-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./Loader.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/global/Loader.vue?vue&type=style&index=0&lang=scss&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/global/Navigation.vue?vue&type=style&index=0&lang=scss&":
 /*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/global/Navigation.vue?vue&type=style&index=0&lang=scss& ***!
@@ -44587,6 +44737,90 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/global/Loader.vue?vue&type=template&id=e42e3f38&":
+/*!****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/global/Loader.vue?vue&type=template&id=e42e3f38& ***!
+  \****************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "loader loader--style3",
+      style:
+        "width: " +
+        _vm.width +
+        "px; height: " +
+        _vm.height +
+        "px; display: " +
+        _vm.display +
+        "",
+      attrs: { title: "2" }
+    },
+    [
+      _c(
+        "svg",
+        {
+          staticStyle: { "enable-background": "new 0 0 50 50" },
+          attrs: {
+            version: "1.1",
+            id: "loader-1",
+            xmlns: "http://www.w3.org/2000/svg",
+            "xmlns:xlink": "http://www.w3.org/1999/xlink",
+            x: "0px",
+            y: "0px",
+            width: _vm.width + "px",
+            height: _vm.height + "px",
+            viewBox: "0 0 50 50",
+            "xml:space": "preserve"
+          }
+        },
+        [
+          _c(
+            "path",
+            {
+              attrs: {
+                fill: "#000",
+                d:
+                  "M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z"
+              }
+            },
+            [
+              _c("animateTransform", {
+                attrs: {
+                  attributeType: "xml",
+                  attributeName: "transform",
+                  type: "rotate",
+                  from: "0 25 25",
+                  to: "360 25 25",
+                  dur: "0.6s",
+                  repeatCount: "indefinite"
+                }
+              })
+            ],
+            1
+          )
+        ]
+      )
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/global/Navigation.vue?vue&type=template&id=9652e536&":
 /*!********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/global/Navigation.vue?vue&type=template&id=9652e536& ***!
@@ -44672,7 +44906,112 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "individual-cafe-map" } })
+  return _c("div", { staticClass: "page", attrs: { id: "cafe" } }, [
+    _c("div", { staticClass: "grid-container" }, [
+      _c("div", { staticClass: "grid-x grid-padding-x" }, [
+        _c(
+          "div",
+          { staticClass: "large-12 medium-12 small-12 cell" },
+          [
+            _c("loader", {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.cafeLoadStatus == 1,
+                  expression: "cafeLoadStatus == 1"
+                }
+              ],
+              attrs: { width: 100, height: 100 }
+            }),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.cafeLoadStatus == 2,
+                    expression: "cafeLoadStatus == 2"
+                  }
+                ],
+                staticClass: "cafe-page"
+              },
+              [
+                _c("h2", [_vm._v(_vm._s(_vm.cafe.name))]),
+                _vm._v(" "),
+                _vm.cafe.location_name != ""
+                  ? _c("h3", [_vm._v(_vm._s(_vm.cafe.location_name))])
+                  : _vm._e(),
+                _vm._v(" "),
+                _c("span", { staticClass: "address" }, [
+                  _vm._v(
+                    "\n                        " + _vm._s(_vm.cafe.address)
+                  ),
+                  _c("br"),
+                  _vm._v(
+                    "\n                        " +
+                      _vm._s(_vm.cafe.city) +
+                      ", " +
+                      _vm._s(_vm.cafe.state)
+                  ),
+                  _c("br"),
+                  _vm._v(
+                    "\n                        " +
+                      _vm._s(_vm.cafe.zip) +
+                      "\n                    "
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "website",
+                    attrs: { href: _vm.cafe.website, target: "_blank" }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(_vm.cafe.website) +
+                        "\n                    "
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "brew-methods-container" }, [
+                  _c(
+                    "div",
+                    { staticClass: "grid-x grid-padding-x" },
+                    _vm._l(_vm.cafe.brew_methods, function(brewMethod) {
+                      return _c(
+                        "div",
+                        { staticClass: "large-3 medium-4 small-12 cell" },
+                        [
+                          _vm._v(
+                            "\n                                " +
+                              _vm._s(brewMethod.method) +
+                              "\n                            "
+                          )
+                        ]
+                      )
+                    }),
+                    0
+                  )
+                ]),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c("individual-cafe-map")
+              ],
+              1
+            )
+          ],
+          1
+        )
+      ])
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -61296,6 +61635,65 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/api/cafe.js":
+/*!**********************************!*\
+  !*** ./resources/js/api/cafe.js ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _config_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../config.js */ "./resources/js/config.js");
+/**
+ * Imports the Roast API URL from the config.
+ */
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  /**
+   * GET /api/v1/cafes
+   */
+  getCafes: function getCafes() {
+    return axios.get(_config_js__WEBPACK_IMPORTED_MODULE_0__["ROAST_CONFIG"].API_URL + '/cafes');
+  },
+
+  /**
+   * GET /api/v1/cafes/{cafeID}
+   */
+  getCafe: function getCafe(cafeID) {
+    return axios.get(_config_js__WEBPACK_IMPORTED_MODULE_0__["ROAST_CONFIG"].API_URL + '/cafes/' + cafeID);
+  },
+
+  /**
+   * POST /api/v1/cafes
+   */
+  postAddNewCafe: function postAddNewCafe(name, address, city, state, zip) {
+    return axios.post(_config_js__WEBPACK_IMPORTED_MODULE_0__["ROAST_CONFIG"].API_URL + '/cafes', {
+      name: name,
+      locations: locations,
+      website: website,
+      description: description,
+      roaster: roaster
+    });
+  },
+
+  /**
+   * POST /api/v1/cafes/{cafeID}/like
+   */
+  postLikeCafe: function postLikeCafe(cafeID) {
+    return axios.post(_config_js__WEBPACK_IMPORTED_MODULE_0__["ROAST_CONFIG"].API_URL + '/cafes/' + cafeID + '/like');
+  },
+
+  /**
+   * DELETE /api/v1/cafes/{cafeID}/like
+   */
+  deleteLikeCafe: function deleteLikeCafe(cafeID) {
+    return axios["delete"](_config_js__WEBPACK_IMPORTED_MODULE_0__["ROAST_CONFIG"].API_URL + '/cafes/' + cafeID + '/like');
+  }
+});
+
+/***/ }),
+
 /***/ "./resources/js/api/user.js":
 /*!**********************************!*\
   !*** ./resources/js/api/user.js ***!
@@ -61648,6 +62046,93 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/global/Loader.vue":
+/*!***************************************************!*\
+  !*** ./resources/js/components/global/Loader.vue ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Loader_vue_vue_type_template_id_e42e3f38___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Loader.vue?vue&type=template&id=e42e3f38& */ "./resources/js/components/global/Loader.vue?vue&type=template&id=e42e3f38&");
+/* harmony import */ var _Loader_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Loader.vue?vue&type=script&lang=js& */ "./resources/js/components/global/Loader.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _Loader_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Loader.vue?vue&type=style&index=0&lang=scss& */ "./resources/js/components/global/Loader.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _Loader_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Loader_vue_vue_type_template_id_e42e3f38___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Loader_vue_vue_type_template_id_e42e3f38___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/global/Loader.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/global/Loader.vue?vue&type=script&lang=js&":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/global/Loader.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_babel_loader_lib_index_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Loader_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/babel-loader/lib??ref--11-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Loader.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/global/Loader.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_babel_loader_lib_index_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Loader_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/global/Loader.vue?vue&type=style&index=0&lang=scss&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/global/Loader.vue?vue&type=style&index=0&lang=scss& ***!
+  \*************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Loader_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--7-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./Loader.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/global/Loader.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Loader_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Loader_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Loader_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Loader_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Loader_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/global/Loader.vue?vue&type=template&id=e42e3f38&":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/global/Loader.vue?vue&type=template&id=e42e3f38& ***!
+  \**********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Loader_vue_vue_type_template_id_e42e3f38___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Loader.vue?vue&type=template&id=e42e3f38& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/global/Loader.vue?vue&type=template&id=e42e3f38&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Loader_vue_vue_type_template_id_e42e3f38___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Loader_vue_vue_type_template_id_e42e3f38___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/global/Navigation.vue":
 /*!*******************************************************!*\
   !*** ./resources/js/components/global/Navigation.vue ***!
@@ -61870,9 +62355,237 @@ var brewMethods = {
   !*** ./resources/js/modules/cafes.js ***!
   \***************************************/
 /*! exports provided: cafes */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\xampp\\htdocs\\projects\\brewandroast\\resources\\js\\modules\\cafes.js: Unexpected token, expected \",\" (71:8)\n\n\u001b[0m \u001b[90m 69 | \u001b[39m\u001b[90m         * Adds a cafe.\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 70 | \u001b[39m\u001b[90m         */\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 71 | \u001b[39m        addCafe({commit\u001b[33m,\u001b[39m state\u001b[33m,\u001b[39m dispatch }\u001b[33m,\u001b[39m data){\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 72 | \u001b[39m            commit(\u001b[32m'setCafeAddedStatus'\u001b[39m\u001b[33m,\u001b[39m \u001b[35m1\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 73 | \u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 74 | \u001b[39m            \u001b[33mCafeAPI\u001b[39m\u001b[33m.\u001b[39mpostAddNewCafe(data\u001b[33m.\u001b[39mname\u001b[33m,\u001b[39m data\u001b[33m.\u001b[39mlocations\u001b[33m,\u001b[39m data\u001b[33m.\u001b[39mwebsite\u001b[33m,\u001b[39m data\u001b[33m.\u001b[39mdescription\u001b[33m,\u001b[39m data\u001b[33m.\u001b[39mroaster)\u001b[0m\n    at Parser.raise (C:\\xampp\\htdocs\\projects\\brewandroast\\node_modules\\@babel\\parser\\lib\\index.js:7012:17)\n    at Parser.unexpected (C:\\xampp\\htdocs\\projects\\brewandroast\\node_modules\\@babel\\parser\\lib\\index.js:8405:16)\n    at Parser.expect (C:\\xampp\\htdocs\\projects\\brewandroast\\node_modules\\@babel\\parser\\lib\\index.js:8391:28)\n    at Parser.parseObj (C:\\xampp\\htdocs\\projects\\brewandroast\\node_modules\\@babel\\parser\\lib\\index.js:9973:14)\n    at Parser.parseExprAtom (C:\\xampp\\htdocs\\projects\\brewandroast\\node_modules\\@babel\\parser\\lib\\index.js:9604:28)\n    at Parser.parseExprSubscripts (C:\\xampp\\htdocs\\projects\\brewandroast\\node_modules\\@babel\\parser\\lib\\index.js:9237:23)\n    at Parser.parseMaybeUnary (C:\\xampp\\htdocs\\projects\\brewandroast\\node_modules\\@babel\\parser\\lib\\index.js:9217:21)\n    at Parser.parseExprOps (C:\\xampp\\htdocs\\projects\\brewandroast\\node_modules\\@babel\\parser\\lib\\index.js:9083:23)\n    at Parser.parseMaybeConditional (C:\\xampp\\htdocs\\projects\\brewandroast\\node_modules\\@babel\\parser\\lib\\index.js:9056:23)\n    at Parser.parseMaybeAssign (C:\\xampp\\htdocs\\projects\\brewandroast\\node_modules\\@babel\\parser\\lib\\index.js:9015:21)\n    at Parser.parseObjectProperty (C:\\xampp\\htdocs\\projects\\brewandroast\\node_modules\\@babel\\parser\\lib\\index.js:10113:101)\n    at Parser.parseObjPropValue (C:\\xampp\\htdocs\\projects\\brewandroast\\node_modules\\@babel\\parser\\lib\\index.js:10138:101)\n    at Parser.parseObjectMember (C:\\xampp\\htdocs\\projects\\brewandroast\\node_modules\\@babel\\parser\\lib\\index.js:10062:10)\n    at Parser.parseObj (C:\\xampp\\htdocs\\projects\\brewandroast\\node_modules\\@babel\\parser\\lib\\index.js:9982:25)\n    at Parser.parseExprAtom (C:\\xampp\\htdocs\\projects\\brewandroast\\node_modules\\@babel\\parser\\lib\\index.js:9604:28)\n    at Parser.parseExprSubscripts (C:\\xampp\\htdocs\\projects\\brewandroast\\node_modules\\@babel\\parser\\lib\\index.js:9237:23)\n    at Parser.parseMaybeUnary (C:\\xampp\\htdocs\\projects\\brewandroast\\node_modules\\@babel\\parser\\lib\\index.js:9217:21)\n    at Parser.parseExprOps (C:\\xampp\\htdocs\\projects\\brewandroast\\node_modules\\@babel\\parser\\lib\\index.js:9083:23)\n    at Parser.parseMaybeConditional (C:\\xampp\\htdocs\\projects\\brewandroast\\node_modules\\@babel\\parser\\lib\\index.js:9056:23)\n    at Parser.parseMaybeAssign (C:\\xampp\\htdocs\\projects\\brewandroast\\node_modules\\@babel\\parser\\lib\\index.js:9015:21)\n    at Parser.parseVar (C:\\xampp\\htdocs\\projects\\brewandroast\\node_modules\\@babel\\parser\\lib\\index.js:11341:26)\n    at Parser.parseVarStatement (C:\\xampp\\htdocs\\projects\\brewandroast\\node_modules\\@babel\\parser\\lib\\index.js:11160:10)\n    at Parser.parseStatementContent (C:\\xampp\\htdocs\\projects\\brewandroast\\node_modules\\@babel\\parser\\lib\\index.js:10757:21)\n    at Parser.parseStatement (C:\\xampp\\htdocs\\projects\\brewandroast\\node_modules\\@babel\\parser\\lib\\index.js:10690:17)\n    at Parser.parseExportDeclaration (C:\\xampp\\htdocs\\projects\\brewandroast\\node_modules\\@babel\\parser\\lib\\index.js:11877:17)\n    at Parser.maybeParseExportDeclaration (C:\\xampp\\htdocs\\projects\\brewandroast\\node_modules\\@babel\\parser\\lib\\index.js:11833:31)\n    at Parser.parseExport (C:\\xampp\\htdocs\\projects\\brewandroast\\node_modules\\@babel\\parser\\lib\\index.js:11763:29)\n    at Parser.parseStatementContent (C:\\xampp\\htdocs\\projects\\brewandroast\\node_modules\\@babel\\parser\\lib\\index.js:10794:27)\n    at Parser.parseStatement (C:\\xampp\\htdocs\\projects\\brewandroast\\node_modules\\@babel\\parser\\lib\\index.js:10690:17)\n    at Parser.parseBlockOrModuleBlockBody (C:\\xampp\\htdocs\\projects\\brewandroast\\node_modules\\@babel\\parser\\lib\\index.js:11266:25)\n    at Parser.parseBlockBody (C:\\xampp\\htdocs\\projects\\brewandroast\\node_modules\\@babel\\parser\\lib\\index.js:11253:10)\n    at Parser.parseTopLevel (C:\\xampp\\htdocs\\projects\\brewandroast\\node_modules\\@babel\\parser\\lib\\index.js:10621:10)\n    at Parser.parse (C:\\xampp\\htdocs\\projects\\brewandroast\\node_modules\\@babel\\parser\\lib\\index.js:12131:10)\n    at parse (C:\\xampp\\htdocs\\projects\\brewandroast\\node_modules\\@babel\\parser\\lib\\index.js:12182:38)\n    at parser (C:\\xampp\\htdocs\\projects\\brewandroast\\node_modules\\@babel\\core\\lib\\transformation\\normalize-file.js:187:34)\n    at normalizeFile (C:\\xampp\\htdocs\\projects\\brewandroast\\node_modules\\@babel\\core\\lib\\transformation\\normalize-file.js:113:11)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "cafes", function() { return cafes; });
+/* harmony import */ var _api_cafe_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../api/cafe.js */ "./resources/js/api/cafe.js");
+/*
+|-------------------------------------------------------------------------------
+| VUEX modules/cafes.js
+|-------------------------------------------------------------------------------
+| The Vuex data store for the cafes
+*/
+
+var cafes = {
+  /**
+   * Defines the state.
+   */
+  state: {
+    cafes: [],
+    cafesLoadStatus: 0,
+    cafe: {},
+    cafeLoadStatus: 0,
+    cafeAddStatus: 0,
+    cafeLikeActionStatus: 0,
+    cafeUnlikeActionStatus: 0,
+    cafeLiked: false
+  },
+
+  /**
+   * Retrieves the data.
+   */
+  actions: {
+    /*
+     * Likes a cafe
+     */
+    likeCafe: function likeCafe(_ref, data) {
+      var commit = _ref.commit,
+          state = _ref.state;
+      commit('setCafeLikeActionStatus', 1);
+      _api_cafe_js__WEBPACK_IMPORTED_MODULE_0__["default"].postLikeCafe(data.id).then(function (response) {
+        commit('setCafeLikedStatus', true);
+        commit('setCafeLikeActionStatus', 2);
+      })["catch"](function () {
+        commit('setCafeLikeActionStatus', 3);
+      });
+    },
+
+    /*
+     * Unlikes a cafe
+     */
+    unlikeCafe: function unlikeCafe(_ref2, data) {
+      var commit = _ref2.commit,
+          state = _ref2.state;
+      commit('setCafeUnlikeActionStatus', 1);
+      _api_cafe_js__WEBPACK_IMPORTED_MODULE_0__["default"].deleteLikeCafe(data.id).then(function (response) {
+        commit('setCafeLikedStatus', false);
+        commit('setCafeUnlikeActionStatus', 2);
+      })["catch"](function () {
+        commit('setCafeUnlikeActionStatus', 3);
+      });
+    },
+
+    /**
+     * Adds a cafe.
+     */
+    addCafe: function addCafe(_ref3, data) {
+      var commit = _ref3.commit,
+          state = _ref3.state,
+          dispatch = _ref3.dispatch;
+      commit('setCafeAddedStatus', 1);
+      _api_cafe_js__WEBPACK_IMPORTED_MODULE_0__["default"].postAddNewCafe(data.name, data.locations, data.website, data.description, data.roaster).then(function (response) {
+        commit('setCafeAddedStatus', 2);
+        dispatch('loadCafes');
+      })["catch"](function () {
+        commit('setCafeAddedStatus', 3);
+      });
+    },
+
+    /**
+     * Loads the cafes from the api.
+     */
+    loadCafes: function loadCafes(_ref4) {
+      var commit = _ref4.commit;
+      commit('setCafesLoadStatus', 1);
+      _api_cafe_js__WEBPACK_IMPORTED_MODULE_0__["default"].getCafes().then(function (response) {
+        commit('setCafes', response.data);
+        commit('setCafesLoadStatus', 2);
+      })["catch"](function () {
+        commit('setCafes', []);
+        commit('setCafesLoadStatus', 3);
+      });
+    },
+
+    /**
+     * Loads an individual cafe from the api.
+     */
+    loadCafe: function loadCafe(_ref5, data) {
+      var commit = _ref5.commit;
+      commit('setCafeLoadStatus', 1);
+      _api_cafe_js__WEBPACK_IMPORTED_MODULE_0__["default"].getCafe().then(function (response) {
+        commit('setCafe ', response.data);
+        commit('setCafeLoadStatus', 2);
+      })["catch"](function () {
+        commit('setCafe', {});
+        commit('setCafeLoadStatus', 3);
+      });
+    }
+  },
+
+  /**
+   * Sets the state.
+   */
+  mutations: {
+    /**
+     * Sets the cafes load status.
+     */
+    setCafesLoadStatus: function setCafesLoadStatus(state, status) {
+      state.cafesLoadStatus = status;
+    },
+
+    /**
+     * Sets the cafes.
+     */
+    setCafes: function setCafes(state, cafes) {
+      state.cafes = cafes;
+    },
+
+    /**
+     * Sets the cafe load status.
+     */
+    setCafeLoadStatus: function setCafeLoadStatus(state, status) {
+      state.cafeLoadStatus = status;
+    },
+
+    /**
+     * Sets the cafe.
+     */
+    setCafe: function setCafe(state, cafe) {
+      state.cafe = cafe;
+    },
+
+    /**
+     * Set the cafe add status.
+     */
+    setCafeAddedStatus: function setCafeAddedStatus(state, status) {
+      state.cafeAddStatus = status;
+    },
+
+    /*
+     * Set the cafe liked status
+     */
+    setCafeLikedStatus: function setCafeLikedStatus(state, status) {
+      state.cafeLiked = status;
+    },
+
+    /*
+     * Set the cafe like action status
+     */
+    setCafeLikeActionStatus: function setCafeLikeActionStatus(state, status) {
+      state.cafeLikeActionStatus = status;
+    },
+
+    /*
+     * Set the cafe unlike action status
+     */
+    setCafeUnlikeActionStatus: function setCafeUnlikeActionStatus(state, status) {
+      state.cafeUnlikeActionStatus = status;
+    }
+  },
+
+  /**
+   * Retrieves the data from the state.
+   */
+  getters: {
+    /**
+     * Returns the cafes load status.
+     */
+    getCafesLoadStatus: function getCafesLoadStatus(state) {
+      return state.cafesLoadStatus;
+    },
+
+    /**
+     * Returns the cafes.
+     */
+    getCafes: function getCafes(state) {
+      return state.cafes;
+    },
+
+    /**
+     * Returns the cafe load status.
+     */
+    getCafeLoadStatus: function getCafeLoadStatus(state) {
+      return state.cafeLoadStatus;
+    },
+
+    /**
+     * Returns the cafe.
+     */
+    getCafe: function getCafe(state) {
+      return state.cafe;
+    },
+
+    /*
+     * Gets the cafe add status.
+     */
+    getCafeAddStatus: function getCafeAddStatus(state) {
+      return state.cafeAddStatus;
+    },
+
+    /*
+     * Gets the cafe liked status
+     */
+    getCafeLikedStatus: function getCafeLikedStatus(state) {
+      return state.cafeLiked;
+    },
+
+    /*
+     * Gets the cafe liked action status
+     */
+    getCafeLikeActionStatus: function getCafeLikeActionStatus(state) {
+      return state.cafeLikeActionStatus;
+    },
+
+    /*
+     * Gets the cafe un-like action status
+     */
+    getCafeUnlikeActionStatus: function getCafeUnlikeActionStatus(state) {
+      return state.cafeUnlikeActionStatus;
+    }
+  }
+};
 
 /***/ }),
 

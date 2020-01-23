@@ -40,13 +40,13 @@ export const cafes = {
             commit('setCafeLikeActionStatus', 1);
 
             CafeAPI.postLikeCafe( data.id )
-            .then( function( response ){
-                commit('setCafeLikedStatus', true);
-                commit('setCafeLikeActionStatus', 2);
-            })
-            .catch(function(){
-                commit('setCafeLikeActionStatus', 3);
-            });
+                .then( function( response ){
+                    commit('setCafeLikedStatus', true);
+                    commit('setCafeLikeActionStatus', 2);
+                })
+                .catch(function(){
+                    commit('setCafeLikeActionStatus', 3);
+                });
         },
 
         /*
@@ -56,14 +56,14 @@ export const cafes = {
             commit('setCafeUnlikeActionStatus', 1);
 
             CafeAPI.deleteLikeCafe(data.id)
-            .then(function(response){
-                commit('setCafeLikedStatus', false);
-                commit('setCafeUnlikeActionStatus', 2);
-            })
-            .catch(function(){
-                commit('setCafeUnlikeActionStatus', 3);
-            });
-        }
+                .then(function(response){
+                    commit('setCafeLikedStatus', false);
+                    commit('setCafeUnlikeActionStatus', 2);
+                })
+                .catch(function(){
+                    commit('setCafeUnlikeActionStatus', 3);
+                });
+        },
 
         /**
          * Adds a cafe.
@@ -111,7 +111,7 @@ export const cafes = {
                     commit('setCafe', {});
                     commit('setCafeLoadStatus', 3);
                 });
-        }
+        },
     },
 
     /**

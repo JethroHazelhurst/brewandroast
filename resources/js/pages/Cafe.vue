@@ -93,7 +93,7 @@
      * Import the loader and cafe map for use in the component.
      */
     import Loader from '../components/global/Loader.vue';
-    import IndividualCafeMap from '../components/cafes/IndividualCafeMap.vue';
+    import IndividualCafeMap from '../components/cafes/CafeMap.vue';
 
     export default {
         /*
