@@ -61406,6 +61406,20 @@ __webpack_require__.r(__webpack_exports__);
       description: description,
       roaster: roaster
     });
+  },
+
+  /**
+   * POST /api/v1/cafes/{cafeID}/like
+   */
+  postLikeCafe: function postLikeCafe(cafeID) {
+    return axios.post(_config_js__WEBPACK_IMPORTED_MODULE_0__["ROAST_CONFIG"].API_URL + '/cafes/' + cafeID + '/like');
+  },
+
+  /**
+   * DELETE /api/v1/cafes/{cafeID}/like
+   */
+  deleteLikeCafe: function deleteLikeCafe(cafeID) {
+    return axios["delete"](_config_js__WEBPACK_IMPORTED_MODULE_0__["ROAST_CONFIG"].API_URL + '/cafes/' + cafeID + '/like');
   }
 });
 
