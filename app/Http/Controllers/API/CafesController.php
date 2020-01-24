@@ -7,6 +7,7 @@ use App\Http\Requests\StoreCafeRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Cafe;
+use Auth;
 
 class CafesController extends Controller
 {
@@ -72,7 +73,7 @@ class CafesController extends Controller
         $state        = $locations[0]['state'];
         $zip          = $locations[0]['zip'];
         $locationName = $locations[0]['name'];
-        $brewMethods  = $locations[0]['methodsAvailable'];
+        // $brewMethods  = $locations[0]['methodsAvailable'];
 
         /*
          * Get the Latitude and Longitude returned from the Google Maps Address.
@@ -88,7 +89,7 @@ class CafesController extends Controller
         $parentCafe->latitude      = $coordinates['lat'];
         $parentCafe->longitude     = $coordinates['lng'];
         $parentCafe->roaster       = $request->get('roaster') != '' ? 1 : 0;
-        $parentCafe->website       = $request->get('website');
+        $parentCafe->website       = 'www2.placeholder.com';
         $parentCafe->description   = $request->get('description') != '' ? $request->get('description') : '';
         $parentCafe->added_by      = Auth::user()->id;
 
@@ -100,7 +101,7 @@ class CafesController extends Controller
         /*
          * Attach the brew methods
          */
-        $parentCafe->brewMethods()->sync($brewMethods);
+        // $parentCafe->brewMethods()->sync($brewMethods);
 
         array_push($addedCafes, $parentCafe->toArray());
 

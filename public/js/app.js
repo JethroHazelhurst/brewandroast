@@ -2746,6 +2746,165 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /**
  *
@@ -2863,6 +3022,10 @@ __webpack_require__.r(__webpack_exports__);
         methodssAvailable: []
       });
       this.validations.locations.push({
+        name: {
+          is_valid: true,
+          text: ''
+        },
         address: {
           is_valid: true,
           text: ''
@@ -2902,16 +3065,15 @@ __webpack_require__.r(__webpack_exports__);
       /*
        * If a website has been entered, ensure the URL is valid
        */
+      // if (this.website.trim != '' && !this.website.match(/^((https?):\/\/)?([w|W]{3}\.)+[a-zA-Z0-9\-\.]{3,}\.[a-zA-Z]{2,}(\.[a-zA-Z]{2,})?$/)) {
+      //     validNewCafeForm = false;
+      //     this.validations.website.is_valid = false;
+      //     this.validations.website.text = 'Please enter a valid URL for the website!';
+      // } else {
+      //     this.validations.website.is_valid = true;
+      //     this.validations.website.text = '';
+      // }
 
-
-      if (this.website.trim != '' && !this.website.match(/^((https?):\/\/)?([w|W]{3}\.)+[a-zA-Z0-9\-\.]{3,}\.[a-zA-Z]{2,}(\.[a-zA-Z]{2,})?$/)) {
-        validNewCafeForm = false;
-        this.validations.website.is_valid = false;
-        this.validations.website.text = 'Please enter a valid URL for the website!';
-      } else {
-        this.validations.website.is_valid = true;
-        this.validations.website.text = '';
-      }
       /*
        * Ensure all locations entered are valid
        */
@@ -2962,7 +3124,7 @@ __webpack_require__.r(__webpack_exports__);
          */
 
 
-        if (this.locations[index].zip.trim() == '' || !this.locations[index].zip.match(/(^\d{5}$)/)) {
+        if (this.locations[index].zip.trim() == '') {
           validNewCafeForm = false;
           this.validations.locations[index].zip.is_valid = false;
           this.validations.locations[index].zip.text = 'Please enter a valid zip code for the new cafe!';
@@ -3109,6 +3271,25 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 // module
 exports.push([module.i, "div.cafe-page h2 {\n  text-align: center;\n  color: #342C0C;\n  font-family: \"Josefin Sans\", sans-serif;\n}\ndiv.cafe-page h3 {\n  text-align: center;\n  color: #E8635F;\n  font-family: \"Josefin Sans\", sans-serif;\n}\ndiv.cafe-page span.address {\n  text-align: center;\n  display: block;\n  font-family: \"Lato\", sans-serif;\n  color: #A0A0A0;\n  font-size: 20px;\n  line-height: 30px;\n  margin-top: 50px;\n}\ndiv.cafe-page a.website {\n  text-align: center;\n  color: #CCAF80;\n  font-size: 30px;\n  font-weight: bold;\n  margin-top: 50px;\n  display: block;\n  font-family: \"Josefin Sans\", sans-serif;\n}\ndiv.cafe-page div.brew-methods-container {\n  max-width: 700px;\n  margin: auto;\n}\ndiv.cafe-page div.brew-methods-container div.cell {\n  text-align: center;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/NewCafe.vue?vue&type=style&index=0&lang=scss&":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/NewCafe.vue?vue&type=style&index=0&lang=scss& ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "div#new-cafe-page {\n  position: fixed;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  background-color: white;\n  z-index: 99999;\n  overflow: auto;\n}\ndiv#new-cafe-page img#back {\n  float: right;\n  margin-top: 20px;\n  margin-right: 20px;\n}\ndiv#new-cafe-page .centered {\n  margin: auto;\n}\ndiv#new-cafe-page h2.page-title {\n  color: #342C0C;\n  font-size: 36px;\n  font-weight: 900;\n  font-family: \"Lato\", sans-serif;\n  margin-top: 60px;\n}\ndiv#new-cafe-page label.form-label {\n  font-family: \"Lato\", sans-serif;\n  text-transform: uppercase;\n  font-weight: bold;\n  color: black;\n  margin-top: 10px;\n  margin-bottom: 10px;\n}\ndiv#new-cafe-page input[type=text].form-input {\n  border: 1px solid #BABABA;\n  border-radius: 3px;\n}\ndiv#new-cafe-page input[type=text].form-input.invalid {\n  border: 1px solid #D0021B;\n}\ndiv#new-cafe-page div.validation {\n  color: #D0021B;\n  font-family: \"Lato\", sans-serif;\n  font-size: 14px;\n  margin-top: -15px;\n  margin-bottom: 15px;\n}\ndiv#new-cafe-page div.location-type {\n  text-align: center;\n  font-family: \"Lato\", sans-serif;\n  font-size: 16px;\n  width: 25%;\n  display: inline-block;\n  height: 55px;\n  line-height: 55px;\n  cursor: pointer;\n  margin-bottom: 5px;\n  margin-right: 10px;\n  background-color: #EEE;\n  color: #111111;\n}\ndiv#new-cafe-page div.location-type.active {\n  color: white;\n  background-color: #E8635F;\n}\ndiv#new-cafe-page div.location-type.roaster {\n  border-top-left-radius: 3px;\n  border-bottom-left-radius: 3px;\n  border-right: 0px;\n}\ndiv#new-cafe-page div.location-type.cafe {\n  border-top-right-radius: 3px;\n  border-bottom-right-radius: 3px;\n}\ndiv#new-cafe-page div.company-selection-container {\n  position: relative;\n}\ndiv#new-cafe-page div.company-selection-container div.company-autocomplete-container {\n  border-radius: 3px;\n  border: 1px solid #BABABA;\n  background-color: white;\n  margin-top: -17px;\n  width: 80%;\n  position: absolute;\n  z-index: 9999;\n}\ndiv#new-cafe-page div.company-selection-container div.company-autocomplete-container div.company-autocomplete {\n  cursor: pointer;\n  padding-left: 12px;\n  padding-right: 12px;\n  padding-top: 8px;\n  padding-bottom: 8px;\n}\ndiv#new-cafe-page div.company-selection-container div.company-autocomplete-container div.company-autocomplete span.company-name {\n  display: block;\n  color: #0D223F;\n  font-size: 16px;\n  font-family: \"Lato\", sans-serif;\n  font-weight: bold;\n}\ndiv#new-cafe-page div.company-selection-container div.company-autocomplete-container div.company-autocomplete span.company-locations {\n  display: block;\n  font-size: 14px;\n  color: #676767;\n  font-family: \"Lato\", sans-serif;\n}\ndiv#new-cafe-page div.company-selection-container div.company-autocomplete-container div.company-autocomplete:hover {\n  background-color: #F2F2F2;\n}\ndiv#new-cafe-page div.company-selection-container div.company-autocomplete-container div.new-company {\n  cursor: pointer;\n  padding-left: 12px;\n  padding-right: 12px;\n  padding-top: 8px;\n  padding-bottom: 8px;\n  font-family: \"Lato\", sans-serif;\n  color: #054E7A;\n  font-style: italic;\n}\ndiv#new-cafe-page div.company-selection-container div.company-autocomplete-container div.new-company:hover {\n  background-color: #F2F2F2;\n}\ndiv#new-cafe-page a.add-location-button {\n  display: block;\n  text-align: center;\n  height: 50px;\n  color: white;\n  border-radius: 3px;\n  font-size: 18px;\n  font-family: \"Lato\", sans-serif;\n  background-color: #A7BE4D;\n  line-height: 50px;\n  margin-bottom: 50px;\n}\n\n/* Small only */\n@media screen and (max-width: 39.9375em) {\ndiv#new-cafe-page div.location-type {\n    width: 50%;\n}\n}", ""]);
 
 // exports
 
@@ -44025,6 +44206,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/NewCafe.vue?vue&type=style&index=0&lang=scss&":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/NewCafe.vue?vue&type=style&index=0&lang=scss& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--7-2!../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../node_modules/vue-loader/lib??vue-loader-options!./NewCafe.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/NewCafe.vue?vue&type=style&index=0&lang=scss&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/lib/addStyles.js":
 /*!****************************************************!*\
   !*** ./node_modules/style-loader/lib/addStyles.js ***!
@@ -45128,351 +45339,417 @@ var render = function() {
       _c(
         "div",
         { staticClass: "grid-container" },
-        _vm._l(_vm.locations, function(location, key) {
-          return _c("div", { staticClass: "grid-x grid-padding-x" }, [
-            _vm._m(0, true),
-            _vm._v(" "),
-            _c("div", { staticClass: "large-6 medium-6 small-12 cell" }, [
-              _c("label", [
-                _vm._v(
-                  "\n                        Location Name\n                        "
-                ),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.locations[key].name,
-                      expression: "locations[key].name"
-                    }
-                  ],
-                  attrs: { type: "text", placeholder: "Location Name" },
-                  domProps: { value: _vm.locations[key].name },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.locations[key], "name", $event.target.value)
-                    }
-                  }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "large-6 medium-6 small-12 cell" }, [
-              _c("label", [
-                _vm._v(
-                  "\n                        Address\n                        "
-                ),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.locations[key].address,
-                      expression: "locations[key].address"
-                    }
-                  ],
-                  attrs: { type: "text", placeholder: "Address" },
-                  domProps: { value: _vm.locations[key].address },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.locations[key],
-                        "address",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]),
+        [
+          _vm._m(0),
+          _vm._v(" "),
+          _vm._l(_vm.locations, function(location, key) {
+            return _c("div", { staticClass: "grid-x grid-padding-x" }, [
+              _vm._m(1, true),
               _vm._v(" "),
-              _c(
-                "span",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: !_vm.validations.locations[key].address.is_valid,
-                      expression: "!validations.locations[key].address.is_valid"
-                    }
-                  ],
-                  staticClass: "validation"
-                },
-                [
+              _c("div", { staticClass: "large-6 medium-6 small-12 cell" }, [
+                _c("label", [
                   _vm._v(
-                    "\n                        " +
-                      _vm._s(_vm.validations.locations[key].address.text) +
-                      "\n                    "
-                  )
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "large-6 medium-6 small-12 cell" }, [
-              _c("label", [
-                _vm._v(
-                  "\n                        City\n                        "
-                ),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.locations[key].city,
-                      expression: "locations[key].city"
-                    }
-                  ],
-                  attrs: { type: "text", placeholder: "City" },
-                  domProps: { value: _vm.locations[key].city },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
+                    "\n                        Location Name\n                        "
+                  ),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.name,
+                        expression: "name"
                       }
-                      _vm.$set(_vm.locations[key], "city", $event.target.value)
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c(
-                "span",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: !_vm.validations.locations[key].city.is_valid,
-                      expression: "!validations.locations[key].city.is_valid"
-                    }
-                  ],
-                  staticClass: "validation"
-                },
-                [
-                  _vm._v(
-                    "\n                        " +
-                      _vm._s(_vm.validations.locations[key].city.text) +
-                      "\n                    "
-                  )
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "large-6 medium-6 small-12 cell" }, [
-              _c("label", [
-                _vm._v(
-                  "\n                        State\n                        "
-                ),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.locations[key].state,
-                      expression: "locations[key].state"
-                    }
-                  ],
-                  attrs: { type: "text", placeholder: "State" },
-                  domProps: { value: _vm.locations[key].state },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.locations[key], "state", $event.target.value)
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c(
-                "span",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: !_vm.validations.locations[key].state.is_valid,
-                      expression: "!validations.locations[key].state.is_valid"
-                    }
-                  ],
-                  staticClass: "validation"
-                },
-                [
-                  _vm._v(
-                    "\n                        " +
-                      _vm._s(_vm.validations.locations[key].state.text) +
-                      "\n                    "
-                  )
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "large-6 medium-6 small-12 cell" }, [
-              _c("label", [
-                _vm._v(
-                  "\n                        Zip\n                        "
-                ),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.locations[key].zip,
-                      expression: "locations[key].zip"
-                    }
-                  ],
-                  attrs: { type: "text", placeholder: "Zip" },
-                  domProps: { value: _vm.locations[key].zip },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.locations[key], "zip", $event.target.value)
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c(
-                "span",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: !_vm.validations.locations[key].zip.is_valid,
-                      expression: "!validations.locations[key].zip.is_valid"
-                    }
-                  ],
-                  staticClass: "validation"
-                },
-                [
-                  _vm._v(
-                    "\n                        " +
-                      _vm._s(_vm.validations.locations[key].zip.text) +
-                      "\n                    "
-                  )
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "large-12 medium-12 small-12 cell" },
-              [
-                _c("label", [_vm._v("Brew Methods Available")]),
-                _vm._v(" "),
-                _vm._l(_vm.brewMethods, function(brewMethod) {
-                  return _c("span", { staticClass: "brew-method" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.locations[key].methodsAvailable,
-                          expression: "locations[key].methodsAvailable"
+                    ],
+                    attrs: { type: "text", placeholder: "Location Name" },
+                    domProps: { value: _vm.name },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
                         }
-                      ],
-                      attrs: {
-                        id: "brew-method-" + brewMethod.id + "-" + key,
-                        type: "checkbox"
-                      },
-                      domProps: {
-                        value: brewMethod.id,
-                        checked: Array.isArray(
-                          _vm.locations[key].methodsAvailable
+                        _vm.name = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: !_vm.validations.name.is_valid,
+                        expression: "!validations.name.is_valid"
+                      }
+                    ],
+                    staticClass: "validation"
+                  },
+                  [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(_vm.validations.name.text) +
+                        "\n                    "
+                    )
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "large-6 medium-6 small-12 cell" }, [
+                _c("label", [
+                  _vm._v(
+                    "\n                        Address\n                        "
+                  ),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.locations[key].address,
+                        expression: "locations[key].address"
+                      }
+                    ],
+                    attrs: { type: "text", placeholder: "Address" },
+                    domProps: { value: _vm.locations[key].address },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.locations[key],
+                          "address",
+                          $event.target.value
                         )
-                          ? _vm._i(
-                              _vm.locations[key].methodsAvailable,
-                              brewMethod.id
-                            ) > -1
-                          : _vm.locations[key].methodsAvailable
-                      },
-                      on: {
-                        change: function($event) {
-                          var $$a = _vm.locations[key].methodsAvailable,
-                            $$el = $event.target,
-                            $$c = $$el.checked ? true : false
-                          if (Array.isArray($$a)) {
-                            var $$v = brewMethod.id,
-                              $$i = _vm._i($$a, $$v)
-                            if ($$el.checked) {
-                              $$i < 0 &&
-                                _vm.$set(
-                                  _vm.locations[key],
-                                  "methodsAvailable",
-                                  $$a.concat([$$v])
-                                )
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: !_vm.validations.locations[key].address.is_valid,
+                        expression:
+                          "!validations.locations[key].address.is_valid"
+                      }
+                    ],
+                    staticClass: "validation"
+                  },
+                  [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(_vm.validations.locations[key].address.text) +
+                        "\n                    "
+                    )
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "large-6 medium-6 small-12 cell" }, [
+                _c("label", [
+                  _vm._v(
+                    "\n                        City\n                        "
+                  ),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.locations[key].city,
+                        expression: "locations[key].city"
+                      }
+                    ],
+                    attrs: { type: "text", placeholder: "City" },
+                    domProps: { value: _vm.locations[key].city },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.locations[key],
+                          "city",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: !_vm.validations.locations[key].city.is_valid,
+                        expression: "!validations.locations[key].city.is_valid"
+                      }
+                    ],
+                    staticClass: "validation"
+                  },
+                  [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(_vm.validations.locations[key].city.text) +
+                        "\n                    "
+                    )
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "large-6 medium-6 small-12 cell" }, [
+                _c("label", [
+                  _vm._v(
+                    "\n                        State\n                        "
+                  ),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.locations[key].state,
+                        expression: "locations[key].state"
+                      }
+                    ],
+                    attrs: { type: "text", placeholder: "State" },
+                    domProps: { value: _vm.locations[key].state },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.locations[key],
+                          "state",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: !_vm.validations.locations[key].state.is_valid,
+                        expression: "!validations.locations[key].state.is_valid"
+                      }
+                    ],
+                    staticClass: "validation"
+                  },
+                  [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(_vm.validations.locations[key].state.text) +
+                        "\n                    "
+                    )
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "large-6 medium-6 small-12 cell" }, [
+                _c("label", [
+                  _vm._v(
+                    "\n                        Zip\n                        "
+                  ),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.locations[key].zip,
+                        expression: "locations[key].zip"
+                      }
+                    ],
+                    attrs: { type: "text", placeholder: "Zip" },
+                    domProps: { value: _vm.locations[key].zip },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.locations[key], "zip", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: !_vm.validations.locations[key].zip.is_valid,
+                        expression: "!validations.locations[key].zip.is_valid"
+                      }
+                    ],
+                    staticClass: "validation"
+                  },
+                  [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(_vm.validations.locations[key].zip.text) +
+                        "\n                    "
+                    )
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "large-12 medium-12 small-12 cell" },
+                [
+                  _c("label", [_vm._v("Brew Methods Available")]),
+                  _vm._v(" "),
+                  _vm._l(_vm.brewMethods, function(brewMethod) {
+                    return _c("span", { staticClass: "brew-method" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.locations[key].methodsAvailable,
+                            expression: "locations[key].methodsAvailable"
+                          }
+                        ],
+                        attrs: {
+                          id: "brew-method-" + brewMethod.id + "-" + key,
+                          type: "checkbox"
+                        },
+                        domProps: {
+                          value: brewMethod.id,
+                          checked: Array.isArray(
+                            _vm.locations[key].methodsAvailable
+                          )
+                            ? _vm._i(
+                                _vm.locations[key].methodsAvailable,
+                                brewMethod.id
+                              ) > -1
+                            : _vm.locations[key].methodsAvailable
+                        },
+                        on: {
+                          change: function($event) {
+                            var $$a = _vm.locations[key].methodsAvailable,
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = brewMethod.id,
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 &&
+                                  _vm.$set(
+                                    _vm.locations[key],
+                                    "methodsAvailable",
+                                    $$a.concat([$$v])
+                                  )
+                              } else {
+                                $$i > -1 &&
+                                  _vm.$set(
+                                    _vm.locations[key],
+                                    "methodsAvailable",
+                                    $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                                  )
+                              }
                             } else {
-                              $$i > -1 &&
-                                _vm.$set(
-                                  _vm.locations[key],
-                                  "methodsAvailable",
-                                  $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                                )
+                              _vm.$set(
+                                _vm.locations[key],
+                                "methodsAvailable",
+                                $$c
+                              )
                             }
-                          } else {
-                            _vm.$set(
-                              _vm.locations[key],
-                              "methodsAvailable",
-                              $$c
-                            )
                           }
                         }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          attrs: {
+                            for: "brew-method-" + brewMethod.id + "-" + key
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            " +
+                              _vm._s(brewMethod.method) +
+                              "\n                        "
+                          )
+                        ]
+                      )
+                    ])
+                  })
+                ],
+                2
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "large-12 medium-12 small-12 cell" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "button",
+                    on: {
+                      click: function($event) {
+                        return _vm.removeLocation(key)
                       }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "label",
-                      {
-                        attrs: {
-                          for: "brew-method-" + brewMethod.id + "-" + key
-                        }
-                      },
-                      [
-                        _vm._v(
-                          "\n                            " +
-                            _vm._s(brewMethod.method) +
-                            "\n                        "
-                        )
-                      ]
-                    )
-                  ])
-                })
-              ],
-              2
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "large-12 medium-12 small-12 cell" }, [
-              _c(
-                "a",
-                {
-                  staticClass: "button",
-                  on: {
-                    click: function($event) {
-                      return _vm.removeLocation(key)
                     }
-                  }
-                },
-                [_vm._v("Remove Location")]
-              )
+                  },
+                  [_vm._v("Remove Location")]
+                )
+              ])
             ])
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "grid-x grid-padding-x" }, [
+            _c(
+              "div",
+              { staticClass: "large-8 medium-9 small-12 cell centered" },
+              [
+                _c(
+                  "a",
+                  {
+                    staticClass: "add-location-button",
+                    on: {
+                      click: function($event) {
+                        return _vm.submitNewCafe()
+                      }
+                    }
+                  },
+                  [_vm._v("Add Cafe")]
+                )
+              ]
+            )
           ])
-        }),
-        0
+        ],
+        2
       )
     ])
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "grid-x grid-padding-x" }, [
+      _c("div", { staticClass: "large-8 medium-9 small-12 cell centered" }, [
+        _c("h2", { staticClass: "page-title" }, [_vm._v("Add Cafe")])
+      ])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -61667,7 +61944,7 @@ __webpack_require__.r(__webpack_exports__);
   /**
    * POST /api/v1/cafes
    */
-  postAddNewCafe: function postAddNewCafe(name, address, city, state, zip) {
+  postAddNewCafe: function postAddNewCafe(name, locations, website, description, roaster) {
     return axios.post(_config_js__WEBPACK_IMPORTED_MODULE_0__["ROAST_CONFIG"].API_URL + '/cafes', {
       name: name,
       locations: locations,
@@ -63030,7 +63307,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _NewCafe_vue_vue_type_template_id_32b4e964___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./NewCafe.vue?vue&type=template&id=32b4e964& */ "./resources/js/pages/NewCafe.vue?vue&type=template&id=32b4e964&");
 /* harmony import */ var _NewCafe_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NewCafe.vue?vue&type=script&lang=js& */ "./resources/js/pages/NewCafe.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _NewCafe_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./NewCafe.vue?vue&type=style&index=0&lang=scss& */ "./resources/js/pages/NewCafe.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
 
 
 
@@ -63038,7 +63317,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _NewCafe_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _NewCafe_vue_vue_type_template_id_32b4e964___WEBPACK_IMPORTED_MODULE_0__["render"],
   _NewCafe_vue_vue_type_template_id_32b4e964___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
@@ -63067,6 +63346,22 @@ component.options.__file = "resources/js/pages/NewCafe.vue"
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_babel_loader_lib_index_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_NewCafe_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/babel-loader/lib??ref--11-0!../../../node_modules/vue-loader/lib??vue-loader-options!./NewCafe.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/NewCafe.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_babel_loader_lib_index_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_NewCafe_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/pages/NewCafe.vue?vue&type=style&index=0&lang=scss&":
+/*!**************************************************************************!*\
+  !*** ./resources/js/pages/NewCafe.vue?vue&type=style&index=0&lang=scss& ***!
+  \**************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_NewCafe_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--7-2!../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../node_modules/vue-loader/lib??vue-loader-options!./NewCafe.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/NewCafe.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_NewCafe_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_NewCafe_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_NewCafe_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_NewCafe_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_NewCafe_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 

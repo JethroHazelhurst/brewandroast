@@ -24,8 +24,7 @@ class StoreCafeRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'         => 'required',
-            'website'      => 'sometimes|url'
+            'name'         => 'required'
         ];
     }
 
@@ -41,9 +40,8 @@ class StoreCafeRequest extends FormRequest
             'location.*.address'      => 'required',
             'location.*.city'         => 'required',
             'location.*.state'        => 'required',
-            'location.*.zip'          => 'required|regex:/\b\d{5}\b/',
-            'location.*.brew_methods' => 'sometimes|array',
-            'website'                 => 'sometimes|url'
+            'location.*.zip'          => 'required',
+            'location.*.brew_methods' => 'sometimes|array'
         ];
     }
 }

@@ -1,11 +1,160 @@
-<style>
-
+<style lang="scss">
+@import '~/abstracts/_variables.scss';
+  div#new-cafe-page{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    z-index: 99999;
+    overflow: auto;
+    img#back{
+      float: right;
+      margin-top: 20px;
+      margin-right: 20px;
+    }
+    .centered{
+      margin: auto;
+    }
+    h2.page-title{
+      color: #342C0C;
+      font-size: 36px;
+      font-weight: 900;
+      font-family: "Lato", sans-serif;
+      margin-top: 60px;
+    }
+    label.form-label{
+      font-family: "Lato", sans-serif;
+      text-transform: uppercase;
+      font-weight: bold;
+      color: black;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    input[type="text"].form-input{
+      border: 1px solid #BABABA;
+      border-radius: 3px;
+      &.invalid{
+        border: 1px solid #D0021B;
+      }
+    }
+    div.validation{
+      color: #D0021B;
+      font-family: "Lato", sans-serif;
+      font-size: 14px;
+      margin-top: -15px;
+      margin-bottom: 15px;
+    }
+    div.location-type{
+      text-align: center;
+      font-family: "Lato", sans-serif;
+      font-size: 16px;
+      width: 25%;
+      display: inline-block;
+      height: 55px;
+      line-height: 55px;
+      cursor: pointer;
+      margin-bottom: 5px;
+      margin-right: 10px;
+      background-color: #EEE;
+      color: $black;
+      &.active{
+        color: white;
+        background-color: $secondary-color;
+      }
+      &.roaster{
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+        border-right: 0px;
+      }
+      &.cafe{
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+      }
+    }
+    div.company-selection-container{
+      position: relative;
+      div.company-autocomplete-container{
+        border-radius: 3px;
+        border: 1px solid #BABABA;
+        background-color: white;
+        margin-top: -17px;
+        width: 80%;
+        position: absolute;
+        z-index: 9999;
+        div.company-autocomplete{
+          cursor: pointer;
+          padding-left: 12px;
+          padding-right: 12px;
+          padding-top: 8px;
+          padding-bottom: 8px;
+          span.company-name{
+            display: block;
+            color: #0D223F;
+            font-size: 16px;
+            font-family: "Lato", sans-serif;
+            font-weight: bold;
+          }
+          span.company-locations{
+            display: block;
+            font-size: 14px;
+            color: #676767;
+            font-family: "Lato", sans-serif;
+          }
+          &:hover{
+            background-color: #F2F2F2;
+          }
+        }
+        div.new-company{
+          cursor: pointer;
+          padding-left: 12px;
+          padding-right: 12px;
+          padding-top: 8px;
+          padding-bottom: 8px;
+          font-family: "Lato", sans-serif;
+          color: #054E7A;
+          font-style: italic;
+          &:hover{
+            background-color: #F2F2F2;
+          }
+        }
+      }
+    }
+    a.add-location-button{
+      display: block;
+      text-align: center;
+      height: 50px;
+      color: white;
+      border-radius: 3px;
+      font-size: 18px;
+      font-family: "Lato", sans-serif;
+      background-color: #A7BE4D;
+      line-height: 50px;
+      margin-bottom: 50px;
+    }
+  }
+  /* Small only */
+  @media screen and (max-width: 39.9375em) {
+    div#new-cafe-page{
+      div.location-type{
+        width: 50%;
+      }
+    }
+  }
 </style>
 
 <template>
     <div class="page">
         <form>
             <div class="grid-container">
+
+                <div class="grid-x grid-padding-x">
+                    <div class="large-8 medium-9 small-12 cell centered">
+                        <h2 class="page-title">Add Cafe</h2>
+                    </div>
+                </div>
+
                 <div class="grid-x grid-padding-x" v-for="(location, key) in locations">
 
                     <div class="large-12 medium-12 small-12 cell">
@@ -15,8 +164,11 @@
                     <div class="large-6 medium-6 small-12 cell">
                         <label>
                             Location Name
-                            <input type="text" placeholder="Location Name" v-model="locations[key].name">
+                            <input type="text" placeholder="Location Name" v-model="name">
                         </label>
+                        <span class="validation" v-show="!validations.name.is_valid">
+                            {{ validations.name.text }}
+                        </span>
                     </div>
 
                     <div class="large-6 medium-6 small-12 cell">
@@ -74,6 +226,13 @@
                     </div>
 
                 </div>
+
+                <div class="grid-x grid-padding-x">
+          <div class="large-8 medium-9 small-12 cell centered">
+            <a class="add-location-button" v-on:click="submitNewCafe()">Add Cafe</a>
+          </div>
+        </div>
+
             </div>
         </form>
     </div>
@@ -201,6 +360,10 @@
                 });
 
                 this.validations.locations.push({
+                    name: {
+                        is_valid: true,
+                        text: ''
+                    },
                     address: {
                         is_valid: true,
                         text: ''
@@ -243,14 +406,14 @@
                 /*
                  * If a website has been entered, ensure the URL is valid
                  */
-                if (this.website.trim != '' && !this.website.match(/^((https?):\/\/)?([w|W]{3}\.)+[a-zA-Z0-9\-\.]{3,}\.[a-zA-Z]{2,}(\.[a-zA-Z]{2,})?$/)) {
-                    validNewCafeForm = false;
-                    this.validations.website.is_valid = false;
-                    this.validations.website.text = 'Please enter a valid URL for the website!';
-                } else {
-                    this.validations.website.is_valid = true;
-                    this.validations.website.text = '';
-                }
+                // if (this.website.trim != '' && !this.website.match(/^((https?):\/\/)?([w|W]{3}\.)+[a-zA-Z0-9\-\.]{3,}\.[a-zA-Z]{2,}(\.[a-zA-Z]{2,})?$/)) {
+                //     validNewCafeForm = false;
+                //     this.validations.website.is_valid = false;
+                //     this.validations.website.text = 'Please enter a valid URL for the website!';
+                // } else {
+                //     this.validations.website.is_valid = true;
+                //     this.validations.website.text = '';
+                // }
 
                 /*
                  * Ensure all locations entered are valid
@@ -297,7 +460,7 @@
                     /*
                      * Ensure a zip has been entered
                      */
-                    if (this.locations[index].zip.trim() == '' || !this.locations[index].zip.match(/(^\d{5}$)/)){
+                    if (this.locations[index].zip.trim() == ''){
                         validNewCafeForm = false;
                         this.validations.locations[index].zip.is_valid = false;
                         this.validations.locations[index].zip.text = 'Please enter a valid zip code for the new cafe!';
@@ -306,7 +469,7 @@
                         this.validations.locations[index].zip.text = '';
                     }
                 }
-
+                
                 return validNewCafeForm;
             },
 
