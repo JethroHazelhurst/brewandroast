@@ -190,4 +190,30 @@ class CafesController extends Controller
         $cafe->likes()->detach( Auth::user()->id );
         return response(null, 204);
     }
+
+    /*
+    |-------------------------------------------------------------------------------
+    | Adds Tags To A Cafe
+    |-------------------------------------------------------------------------------
+    | URL:            /api/v1/cafes/{id}/tags
+    | Controller:     API\CafesController@postAddTags
+    | Method:         POST
+    | Description:    Adds tags to a cafe for a user
+    */
+    public function postAddTags( $cafeID ){
+
+    }
+
+    /*
+    |-------------------------------------------------------------------------------
+    | Deletes A Cafe Tag
+    |-------------------------------------------------------------------------------
+    | URL:            /api/v1/cafes/{id}/tags/{tagID}
+    | Method:         DELETE
+    | Description:    Deletes a tag from a cafe for a user
+    */
+    public function deleteCafeTag( $cafeID, $tagID ){
+
+    }
+
 }
