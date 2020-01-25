@@ -12,8 +12,31 @@ class Tagger{
     public static function tagCafe($cafe, $tags)
     {
         foreach($tags as $tag){
+            /*
+             * Generates a tag name for the entered tag
+             */
+            $name = self::generateTagName($tag);
             // Get the tag by name or create a new tag.
             $newCafeTag = \App\Models\Tag::firstOrNew(array('name' => $tag));
+            /*
+             * Confirm the cafe tag has the name we provided. If it's set already
+             * because the tag exists, this won't make a difference.
+             */
+            $newCafeTag->tag = $name;
+
+            /*
+             * Save the tag
+             */
+            $newCafeTag->save();
+
+            /*
+             * Apply the tag to the cafe
+             */
+            $cafe->tags()->syncWithoutDetaching([
+                $newCafeTag->id => [
+                    'user_id' => Auth::user()->id
+                ]
+            ]);
         }
     }
 
