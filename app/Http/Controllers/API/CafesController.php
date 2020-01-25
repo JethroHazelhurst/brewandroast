@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Utilities\Tagger;
 use App\Utilities\GoogleMaps;
 use App\Http\Requests\StoreCafeRequest;
 use App\Http\Controllers\Controller;
@@ -204,7 +205,34 @@ class CafesController extends Controller
     */
     public function postAddTags($cafeID)
     {
+        /*
+          Grabs the tags array from the request
+        */
+        $tags = Request::get('tags');
 
+        /*
+          Gets the cafe
+        */
+        $cafe = Cafe::where('id', '=', $cafeID)->first();
+
+        /*
+          Tags the cafe
+        */
+        Tagger::tagCafe( $cafe, $tags );
+
+        /*
+          Grabs the cafe with the brew methods, user like and tags
+        */
+        $cafe = Cafe::where('id', '=', $cafeID)
+                    ->with('brewMethods')
+                    ->with('userLike')
+                    ->with('tags')
+                    ->first();
+
+        /*
+          Returns the cafe response as JSON.
+        */
+        return response()->json($cafe, 201);
     }
 
     /*
