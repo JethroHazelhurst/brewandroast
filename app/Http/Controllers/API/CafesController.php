@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Cafe;
 use Auth;
+use DB;
 
 class CafesController extends Controller
 {
@@ -245,7 +246,12 @@ class CafesController extends Controller
     */
     public function deleteCafeTag($cafeID, $tagID)
     {
+        DB::statement('DELETE FROM cafes_users_tags WHERE cafe_id = `'.$cafeID.'` AND tag_id = `'.$tagID.'` AND user_id = `'.Auth::user()->id.'`');
 
+        /*
+         * Return a proper response code for successful untagging
+         */
+        return response(null, 204);
     }
 
 }
