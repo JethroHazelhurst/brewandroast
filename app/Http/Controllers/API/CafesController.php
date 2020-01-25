@@ -171,7 +171,8 @@ class CafesController extends Controller
     /**
      *
      */
-    public function postLikeCafe($cafeID){
+    public function postLikeCafe($cafeID)
+    {
         $cafe = Cafe::where('id', '=', $cafeID)->first();
 
         if (!$cafe->likes->contains(Auth::user()->id)) {
@@ -185,7 +186,8 @@ class CafesController extends Controller
     /**
      *
      */
-    public function deleteLikeCafe( $cafeID ){
+    public function deleteLikeCafe( $cafeID )
+    {
         $cafe = Cafe::where('id', '=', $cafeID)->first();
         $cafe->likes()->detach( Auth::user()->id );
         return response(null, 204);
@@ -200,7 +202,8 @@ class CafesController extends Controller
     | Method:         POST
     | Description:    Adds tags to a cafe for a user
     */
-    public function postAddTags( $cafeID ){
+    public function postAddTags($cafeID)
+    {
 
     }
 
@@ -212,7 +215,8 @@ class CafesController extends Controller
     | Method:         DELETE
     | Description:    Deletes a tag from a cafe for a user
     */
-    public function deleteCafeTag( $cafeID, $tagID ){
+    public function deleteCafeTag($cafeID, $tagID)
+    {
 
     }
 
