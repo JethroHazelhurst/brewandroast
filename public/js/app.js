@@ -45211,8 +45211,11 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _c("br")
-              ]
+                _c("br"),
+                _vm._v(" "),
+                _c("individual-cafe-map")
+              ],
+              1
             )
           ],
           1
