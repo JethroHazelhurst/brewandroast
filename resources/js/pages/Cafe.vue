@@ -79,7 +79,7 @@
 
                         <br>
 
-                        <individual-cafe-map></individual-cafe-map>
+                        <!-- <individual-cafe-map></individual-cafe-map> -->
                     </div>
                 </div>
             </div>

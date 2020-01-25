@@ -45211,11 +45211,8 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _c("br"),
-                _vm._v(" "),
-                _c("individual-cafe-map")
-              ],
-              1
+                _c("br")
+              ]
             )
           ],
           1
@@ -62732,8 +62729,8 @@ var cafes = {
       var commit = _ref5.commit;
       commit('setCafeLikedStatus', false);
       commit('setCafeLoadStatus', 1);
-      _api_cafe_js__WEBPACK_IMPORTED_MODULE_0__["default"].getCafe().then(function (response) {
-        commit('setCafe ', response.data);
+      _api_cafe_js__WEBPACK_IMPORTED_MODULE_0__["default"].getCafe(data.id).then(function (response) {
+        commit('setCafe', response.data);
 
         if (response.data.user_like.length > 0) {
           commit('setCafeLikedStatus', true);
