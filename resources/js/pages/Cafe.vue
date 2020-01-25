@@ -57,6 +57,11 @@
 
                     <div class="cafe-page" v-show="cafeLoadStatus == 2">
                         <h2>{{ cafe.name }}</h2>
+                        <div class="grid-x">
+                            <div class="large-12 medium-12 small-12 cell">
+                                <toggle-like></toggle-like>
+                            </div>
+                        </div>
                         <h3 v-if="cafe.location_name != ''">{{ cafe.location_name }}</h3>
 
                         <span class="address">
@@ -93,7 +98,8 @@
      * Import the loader and cafe map for use in the component.
      */
     import Loader from '../components/global/Loader.vue';
-    import IndividualCafeMap from '../components/cafes/CafeMap.vue';
+    import IndividualCafeMap from '../components/cafes/IndividualCafeMap.vue';
+    import ToggleLike from '../components/cafes/ToggleLike.vue';
 
     export default {
         /*
@@ -101,7 +107,8 @@
          */
         components: {
             Loader,
-            IndividualCafeMap
+            IndividualCafeMap,
+            ToggleLike
         },
 
         /*

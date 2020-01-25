@@ -28,22 +28,26 @@
 
 <template>
     <span class="toggle-like">
+
         <span
-            class="like"
+            class="like like-toggle"
             v-on:click="likeCafe(cafe.id)"
             v-if="!liked && cafeLoadStatus == 2 && cafeLikeActionStatus != 1 && cafeUnlikeActionStatus != 1">
             Like
         </span>
+
         <span
-            class="un-like"
+            class="un-like like-toggle"
             v-on:click="unlikeCafe( cafe.id )"
             v-if="liked && cafeLoadStatus == 2 && cafeLikeActionStatus != 1 && cafeUnlikeActionStatus != 1">
             Un-like
         </span>
-        <loader v-show="cafeLikeActionStatus == 1 || cafeUnlikeActionStatus == 1"
+
+        <Loader v-show="cafeLikeActionStatus == 1 || cafeUnlikeActionStatus == 1"
         :width="30"
         :height="30"
-        :display="'inline-block'">
+        :display="'inline-block'"></Loader>
+
     </span>
 </template>
 
