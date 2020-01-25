@@ -96,4 +96,15 @@ Route::group(['prefix' => 'v1', 'middleware' => 'auth:api'], function(){
     */
     Route::delete('/cafes/{id}/tags/{tagID}', 'API\CafesController@deleteCafeTag');
 
+    /*
+    |-------------------------------------------------------------------------------
+    | Search Tags
+    |-------------------------------------------------------------------------------
+    | URL:            /api/v1/tags
+    | Controller:     API\TagsController@getTags
+    | Method:         GET
+    | Description:    Searches the tags if a query is set otherwise returns all tags
+    */
+    Route::get('/tags', 'API\TagsController@getTags');
+
 });
