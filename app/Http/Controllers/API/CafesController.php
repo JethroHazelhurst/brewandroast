@@ -76,6 +76,7 @@ class CafesController extends Controller
         $zip          = $locations[0]['zip'];
         $locationName = $locations[0]['name'];
         // $brewMethods  = $locations[0]['methodsAvailable'];
+        $tags = $locations[0]['tags'];
 
         /*
          * Get the Latitude and Longitude returned from the Google Maps Address.
@@ -105,6 +106,11 @@ class CafesController extends Controller
          */
         // $parentCafe->brewMethods()->sync($brewMethods);
 
+        /*
+         * Tags the cafe
+         */
+        Tagger::tagCafe($parentCafe, $tags);
+
         array_push($addedCafes, $parentCafe->toArray());
 
         /*
@@ -130,6 +136,7 @@ class CafesController extends Controller
                 $zip          = $locations[$i]['zip'];
                 $locationName = $locations[$i]['name'];
                 $brewMethods  = $locations[$i]['methodsAvailable'];
+                $tags         = $locations[$i]['tags'];
 
                 /*
                  * Get the Latitude and Longitude returned from the Google Maps Address.
@@ -159,6 +166,11 @@ class CafesController extends Controller
                  * Attach the brew methods
                  */
                 $cafe->brewMethods()->sync($brewMethods);
+
+                /*
+                 * Tags the cafe
+                 */
+                Tagger::tagCafe( $cafe, $tags );
 
                 array_push($addedCafes, $cafe->toArray());
             }
